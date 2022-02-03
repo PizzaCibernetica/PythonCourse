@@ -39,6 +39,7 @@ def greet():
 
 print(greet(), "Mario")
 print(greet(), "Gioia")
+print("line 42")
 
 # A "fruitful" function is one that produces a result (or return value)
 # The return statement ends the function execution and "sends back" the result of the function
@@ -51,3 +52,8 @@ def greet(lang):
     else:
         print("Hello")
 
+print(greet('en'), "Mike")
+
+print(greet("es"), "Mario")
+
+print(greet("fr"), "Sophie")
