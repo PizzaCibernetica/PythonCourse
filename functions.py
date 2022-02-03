@@ -28,3 +28,14 @@ greet("en")
 greet("es")
 
 greet("fr")
+
+# return values
+# often a function will take its arguments, do some computation, 
+# and return a value to be used as the value of the fucntion call in the calling expression.
+# The return keyword is used for this.
+
+def greet():
+    return "Hello"
+
+print(greet(), "Mario")
+print(greet(), "Gioia")
