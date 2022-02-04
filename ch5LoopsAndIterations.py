@@ -29,5 +29,17 @@ while n > 0 :
     exit() # needed to exit 
 print("Dry off!")
 
-# ways to exit loops
+# BREAKING OUT OFA LOOP
+# 
+# The break statement ends the current loop and jumps to the statement 
+# immediately following the loop
+# 
+# it it like a loop test can happen anywhere in the body of the loop
+# 
 
+while True:
+    line = input(">")
+    if line == "done":
+        break
+    print(line)
+print("done!")
