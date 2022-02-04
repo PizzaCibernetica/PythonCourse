@@ -15,7 +15,7 @@ n = 5
 while n > 0 :
     print("Lather")
     print("Rinse")
-    exit() # needed to exit 
+    break # needed to exit 
 print("Dry off!")
 
 # the following loop doesn't iterate at all
@@ -26,10 +26,10 @@ n = 0
 while n > 0 :
     print("Lather")
     print("Rinse")
-    exit() # needed to exit 
+    break # needed to exit 
 print("Dry off!")
 
-# BREAKING OUT OFA LOOP
+# BREAKING OUT OF A LOOP
 # 
 # The break statement ends the current loop and jumps to the statement 
 # immediately following the loop
@@ -37,9 +37,10 @@ print("Dry off!")
 # it it like a loop test can happen anywhere in the body of the loop
 # 
 
+print("Hello line 40")
 while True:
-    line = input(">")
+    line = input("> ")
     if line == "done":
         break
     print(line)
-print("done!")
+print("Done!")
