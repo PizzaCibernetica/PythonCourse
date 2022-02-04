@@ -1,6 +1,6 @@
 # PythonCourse
 
 
-<H1> Python Course
+### this is "Python 4 Everybody" course by *Charles Severance*
 
-<p> this is Python 4 Everybody course  
+_www.py4e.com_
