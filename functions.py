@@ -72,3 +72,32 @@ x = addtwo(3,5)
 print(x)
 
 print("The sum of 3 + 5 is ", x) 
+
+# VOID (non-fruitful) functions
+
+# When a function does not return a value, we call it a "void" function
+# Functions that return values are "fruitful" functions
+# Void functions are "not fruitful"
+
+
+# Assignment
+
+def computepay(h, r):
+    if h > 40:
+        ot = h - 40
+        print(ot)
+        otr = r * 1.5
+        print(otr)
+        pay = (40*r)+(ot*otr)
+        print(h*r)
+        print(ot*otr)
+        return pay
+    else:
+        return (h*r)
+
+
+hrs = float(input("Enter Hours:"))
+
+rate = float(input("Enter rate per hour:"))
+p = computepay(hrs, rate)
+print("Pay", p)
