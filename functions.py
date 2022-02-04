@@ -9,7 +9,6 @@ print("Small" , small)
 bignum = max(1,2,3,4,5)
 
 print(bignum)
-
 #this is comment to be deleted
 
 # A parameter is a variable which we use in the function definition. It is a "handle" that 
@@ -35,7 +34,7 @@ greet("fr")
 # The return keyword is used for this.
 
 def greet():
-    return "Hello"
+   return "Hello"
 
 print(greet(), "Mario")
 print(greet(), "Gioia")
@@ -46,11 +45,11 @@ print("line 42")
 
 def greet(lang):
     if lang == 'es':
-        print("Hola")
+        return "Hola"
     elif lang == 'fr':
-        print("Bonjour")
+        return "Bonjour"
     else:
-        print("Hello")
+        return "Hello"
 
 print(greet('en'), "Mike")
 
