@@ -83,6 +83,17 @@ print("Done!")
 # We say that "definite loops iterate through the members of a set"
 
 
+# a simple definite loop
 for i in [5,4,3,2,1] :
     print(i)
 print("Blastoff!")
+
+# a definite loop with Strings
+
+friends = ["Mario", "Giovanna", "Diego"]
+for friend in friends:
+    print("Happy New Year to ", friend)
+print("Done!d")
+
+# ----------------------------------------------
+# LOOP IDIOMS
