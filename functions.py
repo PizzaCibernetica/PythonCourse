@@ -85,12 +85,12 @@ print("The sum of 3 + 5 is ", x)
 def computepay(h, r):
     if h > 40:
         ot = h - 40
-        print(ot)
+        #print(ot)
         otr = r * 1.5
-        print(otr)
+        #print(otr)
         pay = (40*r)+(ot*otr)
-        print(h*r)
-        print(ot*otr)
+        #print(h*r)
+        #print(ot*otr)
         return pay
     else:
         return (h*r)
