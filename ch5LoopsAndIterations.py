@@ -37,10 +37,38 @@ print("Dry off!")
 # it it like a loop test can happen anywhere in the body of the loop
 # 
 
-print("Hello line 40")
+print("-- break --")
 while True:
     line = input("> ")
     if line == "done":
         break
     print(line)
 print("Done!")
+
+# BREAK means -> get out of this loop
+
+# CONTINUE means -> stop this iteration/ we are done with this iteration
+
+# Finishing an Iteration with continue 
+
+# The continue statetment ends the current iteration and jumps to the top loop and starts the next iteration
+
+print("-- Continue --")
+while True:
+    line = input("> ")
+    if line[0] == "#" : # doesn't print comments
+        continue
+    if line == "done" :
+        break
+    print(line)
+print("Done!")
+
+# While loops are called "indefinite loops" because the keep 
+# going until a logical condition becomes False 
+
+# The loops we have seen so far are pretty easy to examine to see if 
+# they will terminate or if they will be "infinite loops"
+
+# Sometimes it is a little harder to be sure if a loop will terminate 
+
+# Definite Loops
