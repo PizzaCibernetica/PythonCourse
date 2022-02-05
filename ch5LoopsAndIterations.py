@@ -112,3 +112,17 @@ print("Before")
 for thing in [9,41,12,3,74,15]:
     print(thing)
 print("After")
+
+
+# use loops to find the largest value
+# set a variable to -1 and compare the variable to the other number 
+# replacing the value if hte number is greater 
+
+largest_so_far = -1   #initilize variable to lowest number
+print("Before", largest_so_far)
+for the_num in [9,41,12,3,74,15]:
+    if the_num > largest_so_far:
+        largest_so_far = the_num
+    print(largest_so_far, "-  -",the_num)
+
+print("After", largest_so_far)
