@@ -97,3 +97,18 @@ print("Done!d")
 
 # ----------------------------------------------
 # LOOP IDIOMS
+
+# patterns on how we construct loops
+
+# MAKING SMARTS LOOPS
+# The trick is "knowing" something about the whole loop when you are stuck 
+# writing code that only sees one entry at the time
+
+# looping though a Set
+
+print("---- LOOP IDIOMS ---")
+
+print("Before")
+for thing in [9,41,12,3,74,15]:
+    print(thing)
+print("After")
