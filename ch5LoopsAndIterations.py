@@ -252,13 +252,18 @@ while True:
             break
         else:
             num = int(num)
-            if largest > num:
+            if largest is None:
                 largest = num
-            if smallest < num:
+            if smallest is None:
+                smallest = num
+
+            if num > largest:
+                largest = num
+            if num < smallest:
                 smallest = num
 
     except ValueError:
-        print("Invalid Input")
+        print("Invalid input")
 
 print("Maximum is", largest)
 
