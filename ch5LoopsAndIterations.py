@@ -1,5 +1,9 @@
 # Repeated Steps
 
+from multiprocessing.sharedctypes import Value
+from turtle import done
+
+
 n = 5 # n is our iteration variable
 while n > 0 :
     print(n)
@@ -134,10 +138,66 @@ print("-- COUNTING IN A LOOP --")
 # To count how many times we execute a loop, we introduce a counter variable 
 # that starts at 0 and we add one to it each time through the loop.
  
-zork = 0
+zork = 0  # in general this variable is called count/counter
 print("Before", zork)
 for thing in [9,41,12,3,74,15]:
     zork = zork + 1
     print(zork, thing)
 print("After", zork)
 
+
+# Summing in a loop
+print("-- SUMMING IN A LOOP --")
+
+# To add up a value we encounter in a loop, we introduce a sum variable that 
+# starts at 0 and we add the value to the sum each time through the loop. 
+ 
+zork = 0  # better variable name would be sum or total
+print("Before", zork)
+for thing in [9,41,12,3,74,15]:
+    zork = zork + thing
+    print(zork, thing)
+print("After", zork)
+
+
+# Finding the Average in a loop
+print("-- AVERAGE --")
+
+# An average just combine the counting and sum patterns and divides when the loop is done
+
+count = 0 
+sum = 0 
+print("Before, count is ", count , " and sum is ", sum)
+for value in [9,41,12,3,74,15]:
+    count = count + 1 
+    sum = sum + value
+    print(count, sum, value)
+print("After the count is ", count, " and the sum is ", sum, " and the average is ", sum/count)
+
+# filtering in a loop
+print("--  FILTERING IN A LOOP  --")
+
+# we use an if statement in the loop to catch / filter the values we are looking for.
+
+print("Before")
+for value in [9,41,12,3,74,15]:
+    if value > 20:
+        print("Large number is ", value)
+print("After")
+
+# Serching using a boolean variable 
+# to search is a particular value is there
+
+print("-- SEARCH using Boolean Variable --")
+
+# if we just want to search and know if a value was found, we use a variable that starts
+# at False and is set to True as soon as we find what we are looking for.
+
+found = False
+print("Before: the value of 'found' is ", found)
+for value in [9,41,12,3,74,15]:
+    if value == 3 :
+        found = True
+        # we can add a break to exit and make this loop more efficient
+    print("found is:", found , "and the value is:", value)
+print("After the value of found is :", found)
