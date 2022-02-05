@@ -227,6 +227,8 @@ print("After", smallest)
 
 print("-- Example of 'is' amd 'is not' --")
 
+# == asks for equality in value, even if a convertion is done
+# is asks for equality both in type and value
 
 if 0 == 0.0:
     print("Yes == ")    # this will print, because 0 and 0.0 are equal in value  
@@ -239,6 +241,8 @@ if 0 != 0.0:
 if 0 is not 0.0:
     print("No - Is Not")# this will print
 
+# Use 'is' sparingly: on Booleans or None type only
+# use == on numbers and strings
 
 # Exercise 5.2
 
