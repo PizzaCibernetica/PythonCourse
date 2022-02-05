@@ -1,6 +1,8 @@
 # Repeated Steps
 
+from ast import IsNot
 from multiprocessing.sharedctypes import Value
+from operator import is_not
 from turtle import done
 
 
@@ -201,3 +203,38 @@ for value in [9,41,12,3,74,15]:
         # we can add a break to exit and make this loop more efficient
     print("found is:", found , "and the value is:", value)
 print("After the value of found is :", found)
+
+# smallest number
+
+print("-- SMALLEST NUMBER --")
+
+smallest = None   #initilize variable to None, because we cannot know the biggest number (None has only one value = none)
+print("Before", smallest)
+for value in [9,41,12,3,74,15]:
+    if smallest is None:    # 'is' is stronger than == 
+        smallest = value    # storing the first value of hte list in the varialble 
+    elif value < smallest:
+        smallest = value
+    print(smallest, value)
+print("After", smallest)
+
+
+# the "is" and "is not" operators are very useful in python
+# pyhton has an "is" operator that can be used in logical expressions 
+# implies "is the same as"
+# Similar to, but stronger than ==
+# "is not" also is a logical operator 
+
+print("-- Example of 'is' amd 'is not' --")
+
+
+if 0 == 0.0:
+    print("Yes == ")    # this will print, because 0 and 0.0 are equal in type and value  
+if 0 is 0.0:
+    print("Yes 'is' ")  # this will not print, because 0 and 0.0 are not the same 'type' 
+print(type(0))
+print(type(0.0))
+if 0 != 0.0:
+    print("No !=")      # this will not print 
+if 0 is not 0.0:
+    print("No - Is Not")# this will print
