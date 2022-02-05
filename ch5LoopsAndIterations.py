@@ -238,3 +238,28 @@ if 0 != 0.0:
     print("No !=")      # this will not print 
 if 0 is not 0.0:
     print("No - Is Not")# this will print
+
+
+# Exercise 5.2
+
+largest = None
+smallest = None
+
+while True:
+    try:
+        num = input("Enter a number (or done to exit): ")
+        if num == "done":
+            break
+        else:
+            num = int(num)
+            if largest > num:
+                largest = num
+            if smallest < num:
+                smallest = num
+
+    except ValueError:
+        print("Invalid Input")
+
+print("Maximum is", largest)
+
+print("Minimum is", smallest)
