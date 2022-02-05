@@ -229,7 +229,7 @@ print("-- Example of 'is' amd 'is not' --")
 
 
 if 0 == 0.0:
-    print("Yes == ")    # this will print, because 0 and 0.0 are equal in type and value  
+    print("Yes == ")    # this will print, because 0 and 0.0 are equal in value  
 if 0 is 0.0:
     print("Yes 'is' ")  # this will not print, because 0 and 0.0 are not the same 'type' 
 print(type(0))
