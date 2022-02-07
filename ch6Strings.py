@@ -1,5 +1,8 @@
 # This chapter will talk about strings
 
+from turtle import width
+
+
 print("-- Chapter 7 Strings --")
 
 # Strings Data Type 
@@ -103,3 +106,123 @@ print('I counted a, and the total is' ,count)
 
 # ADDITIONAL THINGS THAT WE CAN DO WITH A STRING
 
+# Slicing strings
+
+# We can also look at any continous section of any string using a colon separator
+# The second number is one beyond the end of the slice - "up to but not including"
+# If the second number is behiond the end of the string, it stop at the end (no traceback)
+
+# s[0:4](es sub zero to 4)
+
+str = 'Monty Python'
+print(str[0:4])     # print Mont
+print(str[6:7])     # print P
+print(str[6:20])    # print Python
+
+
+# If we leave off the first number or hte last number of the slice, it is assumed to be the beginning or end of hte string respectively
+
+print(str[3:])      # print ty Python
+print(str[:2])      # print Mo      from begining to 2 not included
+print(str[8:])      # print thon    from 8 to end 
+print(str[:])       # print the whole string Monty Python
+
+# String concatenation 
+
+# When the + operator is applied to string, it means concatenate
+
+a = 'Hello'
+b = a + 'There'
+print(b)    # will print HelloThere
+
+c = a + ' ' + 'There'
+print(c)    # will print Hello There
+
+# Using in as a logical Operator
+# The in keyword can also be used to check to see if one string is "in" another string
+# The in expression is a logical expression that 
+# returns True or False and can be used in an if statement
+
+fruit = 'banana'
+'n' in fruit    # True
+'m' in fruit    # False
+'nan' in fruit  # True
+if 'a' in fruit :
+    print('Found it!')  # this will print
+
+# you can compare strings but it is a lexographycal comparison
+
+
+# STRING LIBRARY
+
+# Python has a number of functions which are in the string library
+
+# These functions are already built into every string - 
+# - we invoke them by appending the function to the string variable
+
+# These fucntions do not modify the original string, 
+# instead they return a new string that has been altered
+
+greet = 'Hello Bob'
+zap = greet.lower()
+print(zap)                  # will print hello bob
+print(greet)                # will print Hello Bob
+print('Hei There'.lower())  # will print hei there
+
+
+# https://docs.python.org/3/library/stdtypes.html#string-methods  dir(stuff)
+
+stuff = 'Hello World'
+
+print(type(stuff))
+
+dir(stuff)
+
+
+# the following are very useful string library methods
+
+# str.capitalize()
+# str.center(width[, fillchar])
+# str.endswith()
+# str.find()
+# str.lstrip([chars])
+# str.replace(old, new[, count])
+# str.lower()
+# str.rstrip([char])
+# str.strip()
+# str.upper()
+
+# FIND
+# str.find(sub[, start[, end]])
+# Return the lowest index in the string where substring sub is found within the slice s[start:end]. 
+# Optional arguments start and end are interpreted as in slice notation. Return -1 if sub is not found.
+# We use the find() function to search for a substring within another string
+# find() finds the first occurrence of the substring
+# if the substring is not found, find() return -1
+# Remember that the string position starts at zero
+
+
+
+
+# Exercise 6.5
+
+
+# my solution
+text = "X-DSPAM-Confidence:    0.8475"
+print(text)
+text = text.lower()
+print(text)
+marker = text.find("0.8475")
+print(marker)
+newtext = text[23:29]
+print(newtext)
+output = float(newtext)
+print(output)
+
+
+# Professor solution
+str = "X-DSPAM-Confidence:    0.8475"
+marker = str.find(':')
+piece = str[marker+2:]
+value = float(piece)
+print(value)
