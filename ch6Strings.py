@@ -244,6 +244,23 @@ line.startswith('p')
 # False
 
 
+# Parsing and Extracting 
+
+# what we want to do is to get from a first line of a mail, the school/host name from the FROM line 
+data = "From stephen.marquard@uct.ac.za Sat Jan 5 09:14:16 2008" # email address data
+atpos = data.find("@")      # this is the index position of the @ 
+print("@ position is",atpos)
+
+sppos = data.find(' ',atpos) # this is the index position of the first space after the @
+print("space position is", sppos)
+
+host = data[atpos+1 : sppos] # I get the host by taking the substring from 2 to the space 
+print(host)
+
+
+# in Python3 all strings are UNICODE  (pyhton2 had some confusion)
+
+
 # Exercise 6.5
 
 
