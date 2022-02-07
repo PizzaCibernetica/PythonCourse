@@ -192,6 +192,8 @@ dir(stuff)
 # str.strip()
 # str.upper()
 
+
+# Searching a string
 # FIND
 # str.find(sub[, start[, end]])
 # Return the lowest index in the string where substring sub is found within the slice s[start:end]. 
@@ -201,7 +203,45 @@ dir(stuff)
 # if the substring is not found, find() return -1
 # Remember that the string position starts at zero
 
+#  Making everything upper case 
 
+# .upper() 
+# .lower()
+
+greet = 'Hello Bob'
+nstr = greet.upper()
+print(nstr)   
+
+greet = 'Hello Bob'
+nstr = greet.lower()
+print(nstr) 
+
+
+# Search and Replace 
+# THIS IS SUPER USEFUL
+# The replace() function is like a "search and replace" operation in a word processor
+# It replaces all occurrences of the search string with the replacement string
+ 
+greet = 'Hello Bob'
+nstr = greet.replace('Bob','Jane')
+print(nstr)         # will print Hello Jane  --- and greet string is unchanged
+
+nstr = greet.replace('o','X')
+print(nstr)         # will print HellX BXb
+
+# Strips is also very useful
+# sometimes we want to take a string and remove whitespaces at the beginning and/or end
+
+# lstrip() remove at left
+# rstrip() revove at right
+# strip() remove both beginning and ending whitespaces
+
+# Prefixes
+line = 'Please have a nice day'
+line.startswith('Please')   # this is a question it will return a T/F
+# True
+line.startswith('p')
+# False
 
 
 # Exercise 6.5
