@@ -50,3 +50,56 @@ x = 3
 w = fruit[x -1] # index position 2
 print(w)        # this will print n
 
+#  a character too far
+# you will get a python error if you attempt to index beyond the end of a string 
+# so be careful when constructing index values and slices
+
+zot = 'abc'
+# print(zot[5])   # this will throw a traceback - index out of bound 
+# to fix this we can use the lenght function, which is built in Python
+
+# the len() function gives the lenght of a string 
+
+fruit = 'banana'
+print(len(fruit))   # this will print 6
+
+# LEN is some stored code that we use. A funcion takes some input and produces an output
+
+# LOOPING THROUGH STRINGS
+# Using a while statement and an iteration variable, and the len() function, we can construct 
+# a loop to look at each of the letters in a string individually
+
+# the following example is a indefinite loop
+fruit = 'banana'
+index = 0
+while index < len(fruit):
+    letter = fruit[index]
+    print(index, letter)
+    index = index + 1   # unless you need to absolutely need to know the index number use a for loop
+
+# we generally prefer a definite loop
+fruit = 'banana'
+for letter in fruit:
+    print(letter)
+
+# a definite loop suing a for statement is much more elegant 
+# the iteration variable is completely taken care of by the for loop
+
+
+# Looping and counting
+
+# this is a simple loop that loops through aeach letter in a string and counts 
+# the number of times the loop encounters the 'a' character
+
+word = 'banana'
+count = 0
+for letter in word:         # iteration variable = letter
+    if letter == 'a' :
+        count = count + 1
+print('I counted a, and the total is' ,count)
+
+# the iteration variable "iterates" through the string and the block(or body)
+# of code is executed once for each value in the sequence
+
+# ADDITIONAL THINGS THAT WE CAN DO WITH A STRING
+
