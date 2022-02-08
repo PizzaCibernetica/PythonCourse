@@ -29,10 +29,58 @@ print('Opening a file')
 # What is a handle 
 # a handle is a wrapper that interact between the program and the actual file
 
-fhand = open('stuff.txt') # if the file is missing the code will blow and throw a traceback
-print(fhand)
+#fhand = open('stuff.txt') # if the file is missing the code will blows-up and throw a traceback
+#print(fhand)
 
-#fhand = open("testfile.txt", "x")  # x to create a file 
+# The newline character
+
+# We use a special character called the "newline" to indicate when a line ends
+# We represent it as \n in strings
+# Newline is still one character - not two
+
+stuff = "Hello\nWorld!"
+print(stuff)        # print() also put a newline character at hte end by default
+
+stuff = "X\nY"
+print(stuff)
+
+print(len(stuff))
+
+# File Processing
+print("-- File Processing --")
+
+# a text file can be thought of a sequence of lines
+# at the end of each line there is a character that we dont see (the \n newline )
+
+
+# How to read files in Python
+print("-- How to read files ni Python --")
+
+# File handle as a sequence 
+# A file handle open for read can be treated as a sequence of strings where each line 
+# in the file is a string in a  sequence
+
+# We can use the for statement to iterate through a sequence
+# Remember - a sequence is an ordered set
+
+xfile = open('mbox.txt')    # the file handle is named xfile 
+for cheese in xfile:        # for each line in the file handle xline
+    print(cheese)           # print each line
+
+# Thing the we can do
+
+# counting the lines in a file
+# open a file read-only
+# use a for loop to read each line
+# count the lines and print out the number of lines
+
+fhand = open("mbox.txt")
+count = 0
+for line in fhand:
+    count = count + 1
+print("Line count:", count)
+
+ #fhand = open("testfile.txt", "x")  # x to create a file 
 #fhand.close()
 
 # fhand = open("testfile.txt", "a")
