@@ -1,5 +1,8 @@
 # Files chapter from Python for Everybody
 
+from tkinter import N
+
+
 print("Chapter 8 -- Files")
 
 # We are going to mainly use text files - which can be thpought as a sequence of lines
@@ -80,6 +83,96 @@ for line in fhand:
     count = count + 1
 print("Line count:", count)
 
+# Reading the whole file 
+# it is also possible to read the file as a series of characters, all in one go
+# this approach can create a problem if the file is very big, cause this will lead to a variable
+# depending on the size of the file, woth a very large amount of data
+# 100K of characheter is good , 10 millions of line can lead to issues
+
+fhand = open('mbox.txt')
+inp = fhand.read()  # read method
+print(len(inp))     # print the lenght of the file
+print(inp[:20])
+
+# Searching Through a File
+
+# We can put an if statement in our for loop to only print lines that meet some criteria
+
+fhand = open('mbox-short.txt')      # create the handle
+for line in fhand:                  # go through each line of the file
+    if line.startswith('From'):     # check if they statr with FROM
+        print(line)                 # print the one that strat with From
+
+# # we will get 
+# From: abc@mail.com\n
+# \n
+# From: def@mail.it\n
+
+
+# what we get is a list of email addresses separated by an empty line 
+
+# each kine from the file has a newline at the end
+# the print statement adds a newline to each line
+
+# we can strip the whitespace from the right-hand side of the string using rstrip() from the string library
+# the newline is considered "white space" and is stripped
+# this is the corret way to do it 
+print("Correct way to search through a file")
+
+fhand =open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()        # this will strip the newline(invisible) character
+    if line.startswith("From"):
+        print(line)
+
+
+# Skipping with continue
+# this is a better version, because we can conveniently skip 
+
+fhand = open("myfile.txt")
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith("From:"):
+        continue
+    print(line)
+
+
+    # Using in to select lines
+# we can look for a string anywhere in a line as our selection criteria
+
+fhand = open("mytextfile.txt")
+for line in fhand:
+    line = line.rstrip()
+    if not '@uct.ac.za' in line:
+        continue
+    print(line)
+
+# some time programs what to prompt to a file name
+fname = input('Enter the file name: ')
+fhand = open(fname)
+count = 0
+for line in fhand:
+    if line.startswith('Subject: '):
+        count = count + 1 
+print('There were', count, 'subject lines in', fname)
+
+# if the user type in bad file names 
+# use a try except 
+
+fname = input('Enter the file name: ')
+try:
+    fhand = open(fname)
+except:
+    print('File cannot be opened: ', fname)
+    quit()  # useful to stop executing because you detected some kind of error
+
+count = 0
+for line in fhand:
+    if line.startswith('Subject: '):
+        count = count + 1 
+print('There were', count, 'subject lines in', fname)
+
+
  #fhand = open("testfile.txt", "x")  # x to create a file 
 #fhand.close()
 
@@ -89,37 +182,3 @@ print("Line count:", count)
 
 # f = open("testfile.txt","r")
 # print(f.read())
-
-
-
-
-score = input("Enter Score: ")
-fs = float(score)
-
-if fs > 1.0:
-    print("Out of range... above")
-    exit()
-elif fs < 0:
-    print("Oot of range... below")
-    exit()
-else:
-    if fs >= 0.9:
-        print("A") 
-    elif fs >= 0.8:
-        print("B")
-    elif fs >= 0.7:
-        print("C")
-    elif fs >= 0.6:
-        print("D")
-    else:
-        print("F")
-
-
-# file read
-
-#fileHandle = open('filename.txt')
-#for line in fileHandle:
-#    line = line.rstrip()
-#    if not '@icloud.com' in line:
-#        continue
-#    print(line)
