@@ -1,5 +1,6 @@
 # Files chapter from Python for Everybody
 
+from operator import index
 from tkinter import N
 
 
@@ -182,3 +183,27 @@ print('There were', count, 'subject lines in', fname)
 
 # f = open("testfile.txt","r")
 # print(f.read())
+
+
+# Exercize 7.2 
+
+# Use the file name mbox-short.txt as the file name
+fname = input("Enter file name: ")
+count = 0
+total = 0
+try:
+    fh = open(fname)
+except:
+    print("Wrong name")
+    quit()
+
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:"):
+        continue
+    marker = line.find(":")
+    piece = line[marker+2:]
+    value = float(piece)    
+    count = count + 1
+    total = total + value
+
+print("Average spam confidence:", total/count)
