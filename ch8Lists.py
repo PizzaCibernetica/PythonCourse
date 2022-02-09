@@ -217,3 +217,23 @@ print(fruits)
 
 
 
+
+# Exercize 8.4
+
+fname = input("Enter file name: ")
+fh = open(fname)
+lst = list()
+# print(lst)
+for line in fh:
+    # print(line)
+    words = line.split()
+    for word in words:
+        if word in lst: continue
+        lst.append(word)
+    # print(words)
+    
+    # lst.append(word)
+lst.sort()
+print(lst)
+
+
