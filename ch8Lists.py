@@ -213,27 +213,130 @@ print(fruits.pop())
 # 'pear'
 print(fruits)
 
-# Is somthing in a List?
+# Is something in a List?
 
+# We have a in operator that let you check if an item is in a list
+# these are logical operators that return True or False
+
+# They do not modify the list   <--------
+
+some = [1,9,21,10,16]
+
+# 9 in some         -> will be True
+print(9 in some)
+
+# 15 in some        -> will be False
+print(15 in some)
+
+# 20 not in some    -> will be True
+print(20 not in some)
+
+# lIsts are in Order
+
+# a list can hold many items and keeps those items in the order until we do something to change the order
+
+# a list can be sorted (i.e.  change its order)
+
+# the sort methos (unlike in strings) means "sort yuorself"
+
+friends = ['Joseph', 'Glenn', 'Sally']
+friends.sort()
+print(friends)      # will print ['Glenn', 'Joseph', 'Sally']
+print(friends[1])
+
+
+# Built-in functions and Lists
+
+nums= [3, 41, 12, 9,74,15]
+print(len(nums))    # prints the lenght of the LIst
+# 6
+print(max(nums))    # prints the largest value in the List
+# 74
+print(min(nums))    # prints the lowest value in the List
+# 3
+print(sum(nums))    # prints the sum of the values in the List
+# 154
+print(sum(nums)/len(nums))  # can calculate average
+# 25.6
+
+# Different ways to create loops / the folowing pieces of code will do the same thing 
+
+# first ways 
+total = 0
+count = 0
+
+while True:
+    inp = input('Enter a number:')
+    if inp == 'done': break
+    value = float(inp)
+
+    total = total + value
+    count = count + 1
+
+average = total / count
+
+print('Average:', average)
+
+# second way  -- THIS use more memory cause they values have to be stored simultaneously
+numlist = list()        # creates an empty list
+
+while True:
+    inp = input('Enter a number:')
+    if inp == 'done': break
+    value = float(inp)
+
+    numlist.append(value)           # add the value at hte end of the list
+
+average = sum(numlist)/len(numlist) # calculate the average with sum() and len()
+
+print('Average:', average)
+
+# one difference is the amount of memory used. The first method use less memory because it calculates the 
+# values each time , while the second method stores all the values in memory and than do the calculation 
+
+
+# How Strings and Lists are related 
+# 
+
+# Best Friends: Strings and Lists
+
+# split() breaks a string into parts and produces a list of strings. We think of these as words. 
+# We can access a particular word or loop through all the words.
+# split look at the spaces and breaks the strings into smaller strings , and stores them in a List
+
+abc = 'With three words'
+stuff = abc.split()
+print(stuff)    # will print ['With', 'three', 'words']
+
+print(len(stuff))   # will print 3
+
+print(stuff[0])     # will print With 
+
+# split() is a quick way to go from a line to words
+# and you can loop though them
+print(stuff)
+
+for w in stuff:
+    print(w)
 
 
 
 # Exercize 8.4
 
-fname = input("Enter file name: ")
-fh = open(fname)
-lst = list()
-# print(lst)
-for line in fh:
-    # print(line)
-    words = line.split()
-    for word in words:
-        if word in lst: continue
-        lst.append(word)
-    # print(words)
+# fname = input("Enter file name: ")
+# fh = open(fname)
+# lst = list()
+# # print(lst)
+# for line in fh:
+#     # print(line)
+#     words = line.split()
+#     for word in words:
+#         if word in lst: continue
+#         lst.append(word)
+#     # print(words)
     
-    # lst.append(word)
-lst.sort()
-print(lst)
+#     # lst.append(word)
+# lst.sort()
+# print(lst)
 
 
