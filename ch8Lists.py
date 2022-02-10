@@ -319,24 +319,92 @@ print(stuff)
 for w in stuff:
     print(w)
 
+# How split works
+
+# split() looks for spaces , but it also treates a lot of spaces like one
+
+line = 'A lot                        of      spaces'
+etc = line.split()
+print(etc)  # will print ['A', 'lot', 'of', 'spaces']
+
+# tabs , newline ,and other character will qaulify for split 
+
+line = 'A lot                        of   \n   spaces'
+print(line)
+etc = line.split()
+print(etc)  # will print ['A', 'lot', 'of', 'spaces']
+
+# you can specify what delimiter charcacter to use in the splitting
+line = 'first;second;third'
+thing = line.split()
+print(thing)            # will print ['first;second;third']
+print(len(thing))       # 1
+
+thing = line.split(';')
+print(thing)            # ['first', 'second', 'third']
+
+print(len(thing))       # 3   we have now 3 items
+
+# this is useful for example when we want to parse email addresses 
+
+
+# Sometime we want to dig deeper. We split a line one way, and then grab one of the pieces of the line and split that piece again
+
+
+# FROM: stephen.marquest@uct.ac.za Sat Jan 5 09:14:16 2008
+# -----------------------     /\   ------------------------
+# -----------------------     I    ------------------------
+words = line.spli()
+email = words[1]        # we take the email address
+# stephen.marquest@uct.ac.za
+pieces = email.spli('@')
+pieces[1]
+
+# this is a cleaner way to take inforation out of a line 
+# this is also more typical
+
 
 
 # Exercize 8.4
 
-# fname = input("Enter file name: ")
-# fh = open(fname)
-# lst = list()
-# # print(lst)
-# for line in fh:
-#     # print(line)
-#     words = line.split()
-#     for word in words:
-#         if word in lst: continue
-#         lst.append(word)
-#     # print(words)
-    
-#     # lst.append(word)
-# lst.sort()
+fname = input("Enter file name: ")
+fh = open(fname)
+lst = list()
 # print(lst)
+for line in fh:
+    # print(line)
+    words = line.split()
+    for word in words:
+        if word in lst: continue
+        lst.append(word)
+    # print(words)
+    
+    # lst.append(word)
+lst.sort()
+print(lst)
 
 
+# Exercize 8.5
+
+fname = input("Enter file name: ")
+if len(fname) < 1:
+    fname = "mbox-short.txt"
+
+fh = open(fname)
+count = 0
+lst = list()
+
+for line in fh:
+    if line.startswith('From:'):
+        
+        words = line.split()
+        email = words[1]
+        #if email in lst: continue  # this will allow to get unique email addresses
+        lst.append(email)
+        count = count + 1
+        
+       
+        print(email)
+
+
+print("There were", count, "lines in the file with From as the first word")
