@@ -1,6 +1,5 @@
 # DICTIONARIES
 
-
 print('---  DICTIONARIES   ---')
 
 # What is a Collection?
