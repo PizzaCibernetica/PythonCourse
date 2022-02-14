@@ -1,8 +1,4 @@
 # DICTIONARIES
-from itertools import count
-from pickle import LIST
-from unicodedata import name
-from unittest.util import three_way_cmp
 
 
 print('---  DICTIONARIES   ---')
