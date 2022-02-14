@@ -1,5 +1,8 @@
 # DICTIONARIES
+from itertools import count
 from pickle import LIST
+from unicodedata import name
+from unittest.util import three_way_cmp
 
 
 print('---  DICTIONARIES   ---')
@@ -83,3 +86,93 @@ print('---  DICTIONARIES   ---')
 # [23, 183]                     {'course': 182, 'age': 23}
 
 
+# Key   Value                   Key         Value
+# [0]   21                      ['course']  182  
+# [1]   183                     ['age']     21
+
+# the values are the same but the key is different
+
+
+
+# Dictionary Literals (Constants)
+
+# Dictionary literals use curly braces and have a list of key:value pairs
+
+# you can make an empty dictionary using empty curly braces
+
+jjj = {'chuck' : 1 , 'fred' : 42 , 'jan' : 100 }
+print(jjj)
+
+ooo = {}    # empty dictionary - common constructor
+print(ooo)
+
+
+# Video 2
+# common application of dictionary => counting frequency of things
+# Most Common Name? 
+
+# Many counters with dictionary
+# the common idea of using dictionary is to use them to keep count of items
+
+# one common use of dictionaries is counting how often we "see" something
+
+ccc = dict()
+ccc['csev'] = 1
+ccc['cwen'] = 1
+print(ccc)      # will print {'csev': 1, 'cwen': 1}
+
+
+ccc['cwen'] = ccc['cwen'] + 1   # the idea is to use it to keep count
+print(ccc)      # will print {'csev': 1, 'cwen': 2}
+
+
+# Dictionary Trsceback
+# one thing you cannot do , and it is frustrating, you cannot look up something that is not there 
+# it is an error to reference a key which is not in the dictionary
+
+# ccc=dict()
+# print(ccc['csev']) # this will trow a traceback
+
+# we can use the in operator to see if a key is in the dictionary
+
+# 'csev' in ccc
+# False
+
+# When we encounter a new name, we need to add a new entry in the dictionary and if this the second 
+# or later time we have seen the name , we simply add one to the count in the dictionary under that name
+
+counts = dict()
+names =['csev', 'cwen', 'csev', 'zqian', 'cwen']
+for name in names :
+    if name not in counts:
+        counts[name] = 1
+    else:
+        counts[name] = counts[name] + 1
+print(counts) # this will output the data for the istagram
+
+
+# the idea of checking if a name is in a dictionary is so common that there is a method for it 
+# The GET method for dictionary
+# The pattern of checking to see if a key is already in a dictionary and assuming a default value
+#  is the key is not there is so common that there is a method calle get() that does this for us
+
+# if name in counts:
+#     x = counts[names]
+# else:
+#     x = 0
+
+# this methods is built in python
+
+x = counts.get(name,0) 
+
+# Simplified counting with get()
+# ---- YOU WILL USE THIS A LOT ---
+# we can use get() and provide a default value of zero when the key is not yet in the dictionary - and then just add one
+
+counts = dict()
+names =['csev', 'cwen', 'csev', 'zqian', 'cwen', 'matt']
+for name in names :
+    counts[name] = counts.get(name, 0) + 1
+print(counts)
+
+# Video 3
