@@ -1,5 +1,8 @@
 # DICTIONARIES
 
+from itertools import count
+
+
 print('---  DICTIONARIES   ---')
 
 # What is a Collection?
@@ -171,3 +174,108 @@ for name in names :
 print(counts)
 
 # Video 3
+
+
+# counting words in text
+# the general pattern to count the words in a line of text is to split the line into words,
+#  then loop through the words and use a dictionary  to track the count of each word independently
+
+counts = dict()                     # start with empty dictionary
+
+print('Enter a line of text:')      # ask for a line of text 
+line = input('')                    # read the line in
+
+words = line.split()                # use split to get a list of words
+
+print('Words:', words)              # print it out 
+
+print('Counting:')                  # counting the words
+for word in words:
+    counts[word] = counts.get(word,0) + 1
+
+print('Counts', counts)
+
+
+# define Loops and Dictionaries
+
+# ways to loop thrugh a dictionary
+# Even though dictionaries are not stored in order, we can write a for loop that goes through all the entries in a dictionary - 
+# actually it goes through all of the keys in the dictionary and looks up the values 
+
+counts = {'chuck': 1 , 'fred': 42 , 'jan':100}
+for key in counts:
+    print(key, counts[key]) 
+
+# Retrieving lists of Keys and values
+# there are a couple of methods that allow us to retrieve the keys
+# you can get a list of keys, values, or items(both) from a dictionary
+
+jjj = {'chuck': 1 , 'fred': 42 , 'jan':100}
+print(list(jjj))    # turn this into a list
+
+print(jjj.keys())      # get the keys 
+
+print(jjj.values())     # get the values
+
+print(jjj.items())      # get the item (list of key/vslue pairs)
+
+
+# Bonus: two Iteration Variables!
+
+# we loop through the key-value pairs in a dictionary using two iteration variables
+
+# each iteration, the first variable is the key and the second variable is the corresponding  value for the key
+
+jjj = {'chuck': 1 , 'fred': 42 , 'jan':100}
+for aaa,bbb in jjj.items():                 # this is a python implementation not seen in other languages
+    print(aaa,bbb)                          # you need to use items() for the two iteration variables
+
+
+
+# how to find the most common word
+name = input('Enter file name:')    # ask for a file name
+handle = open(name)                 # create a handle to store the file data
+
+counts = dict()                     # create a empty dictionary
+for line in handle:                 # iteration variable that is going through the lines of the file
+    words = line.spit()             # split that line into words - words is the list of words in one line
+    for word in words:              # iterate through every word in the line
+        counts[word] = counts.get(word, 0) + 1      # make a histogram to count the occurence of each word 
+
+bigcount = None                         # instantiate a variable for the biggest count with value None  
+bigword = None                          # instantiate a variable for the g=biggest word with vaue of None
+for word,count in counts.items():       # for word and count going throug the key-value pairs 
+    if bigcount is None or count > bigcount:    # if the bigcount is none jump in the loop OR if the count is bigger than the bigcount
+        bigword = word                  # set the word in bigword
+        bigcount = count                # set the count in bigcount
+
+print(bigword, bigcount)
+
+
+# Exercize 9.4
+
+# Open the file and create a handle 
+name = input("Enter file:")
+if len(name) < 1:
+    name = "mbox-short.txt"
+handle = open(name)
+
+# create a dictionary
+counts = dict()
+
+# loop through the  file and store values in the 
+for line in handle:
+    if line.startswith('From:'):
+        words = line.split()    # slit the line into words - result is a From: and email@ddre.ss
+        
+        counts[words[1]] = counts.get(words[1], 0) + 1
+        
+
+bigcount = None                         # instantiate a variable for the biggest count with value None  
+bigemail = None                          # instantiate a variable to keep track of the email with most count 
+for word,count in counts.items():       # for word and count going throug the key-value pairs 
+    if bigcount is None or count > bigcount:    # if the bigcount is none jump in the loop OR if the count is bigger than the bigcount
+        bigemail = word                  # set the word in bigword
+        bigcount = count                # set the count in bigcount
+
+print(bigemail, bigcount)
