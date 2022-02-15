@@ -266,7 +266,7 @@ counts = dict()
 # loop through the  file and store values in the 
 for line in handle:
     if line.startswith('From:'):
-        words = line.split()    # slit the line into words - result is From: and email@ddre.ss - email is at words[1] location
+        words = line.split()    # split the line into words - result is From: and email@ddre.ss - email is at words[1] location
         # next make a histogram to count the occurence of each word     
         counts[words[1]] = counts.get(words[1], 0) + 1 
         

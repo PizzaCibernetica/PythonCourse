@@ -216,3 +216,27 @@ print( sorted( [ (v,k) in c.items() ] ) )
 
 https://wiki.python.org/moin/HowTo/Sorting/
 
+
+# Exercize 10.2
+#  
+name = input("Enter file:")
+if len(name) < 1:
+    name = "mbox-short.txt"
+handle = open(name)
+
+hours = dict()
+for line in fhand:
+    line = line.strip()
+    if line.startswith("From "):
+        wds = line.split()
+        hour = wds[5].split(":")[0]
+        hours[hour] = hours.get(hour,0)+1
+
+lst=list()
+for k,v in hours.items():
+    new=(k,v)
+    lst.append(new)
+
+lst = sorted(lst,reverse=False)
+for k,v in lst:
+    print(k,v)
