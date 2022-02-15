@@ -123,6 +123,96 @@ print(tups)
 # the comparison operator work with tuples and other sequences. 
 # If the first item is equal, python goes on to the next element, and so on, until it finds elemnts that differ.
 
-(0, 1, 2) < (5, 1, 2)
-True
+if (0, 1, 2) < (5, 1, 2):       # will check the first, don't check the rest
+    print('True')
+
+if (0, 1, 200000) < (0, 3 , 2): # will check the first (even), check the second, don't check the rest 
+    print('True')
+
+
+if ('Jones', 'Sally') < ('Jones', 'Sam'): 
+    print('True')
+
+
+if ('Jones', 'Sally') > ('Adam', 'Sam'): # Just evaluate  the first letters
+    print('True')
+
+
+# Sorting Lists of Tuples
+
+# we can take advantage of the ability to sort a list of tuples to get a sorted version of a dictionary
+
+# first we sort the dictionary by the key using the items() method and sorted() function
+
+d = {'a':10, 'c':22 , 'b':1}
+
+print(d.items())   # dict_items([('a', 10), ('c', 22), ('b', 1)])
+
+print(sorted(d.items()))    #[('a', 10), ('b', 1), ('c', 22)]  will sort only the keys
+
+# using sorted()
+
+# we can do this even more directly using the built-in function
+#  sorted() that takes a sequence as a parameter and returns a sorted sequence
+
+for k,v in sorted(d.items()):
+    print(k,v)
+
+# sort by values instead of key
+
+# if we could construct a list of tuples of the form (value, key) we could sort by value
+# we do this with a for loop that creates a list of tuples
+
+c = {'a':10, 'b':1, 'c':22}
+
+tmp = list()
+
+for k,v in c.items():
+    tmp.append( (v,k) ) # reverse order
+
+print('tmp =',tmp)
+
+tmp = sorted(tmp, reverse=True)
+
+print(tmp)
+
+
+# even a shorter version
+
+c = {'a':10, 'b':1, 'c':22}
+
+print( sorted( [ (v,k) in c.items() ] ) )
+
+https://wiki.python.org/moin/HowTo/Sorting/
+
+# Print the most common words in a file 
+
+fhand = open('romeo.txt')
+counts = dict()
+
+for line in fhand:
+    words = line.split()
+    for word in words:
+        counts[words] = counts.get(word, 0) + 1 # idiom to make histagram
+# ------------------ we have the histogram now ---------------------
+lst = list()
+for key,val in counts.items():
+    newtup = (val, key)
+    lst.append(newtup)
+# ------------------ now we have a list of tuples, value/key order
+lst = sorted(lst, reverse=True)
+# -------------- now we have a sorted  list -------------------------
+for val, key in lst[:10]:   # pick only the first 10 entry of the list (which are the most common)
+    print(key,val)          # print it in order by key ,value
+
+
+# even a shorter version
+
+c = {'a':10, 'b':1, 'c':22}
+
+print( sorted( [ (v,k) in c.items() ] ) )
+
+# list comprehension creates a dynamic list. In this case, we make a list of reversed tuples and then sort it.
+
+https://wiki.python.org/moin/HowTo/Sorting/
 
