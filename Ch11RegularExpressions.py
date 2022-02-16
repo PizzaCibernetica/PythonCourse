@@ -150,8 +150,36 @@ print('--- Matching and Extracting Data ---')
 # If we actually want the matching strings to be extracted, we use re.findall()
 
 
-# [0-9]+   
+# [0-9]+   ==>  [] means 1 char , 0 to 9, + repeates it ==> find any character between 0 and 9 one or more times => find one or more digits 
 x = 'My 2 favorite numbers are 19 and 42'
 y = re.findall('[0-9]+',x)
 print(y)
 # ['2', '19', '42']
+
+
+# Matching and Extracting Data
+
+# When we use re.findall(), it returns a list of zero or more sub-strings that match the regular expression
+
+
+x = 'My 2 favorite numbers are 19 and 42'
+y = re.findall('[0-9]+',x)
+print(y)
+# will print ['2', '19', '42']
+y = re.findall('[AEIOU]+',x)    # uppercase AEIOU
+print(y)
+# will print [] , an empty list
+
+y = re.findall('[aeiou]+',x)    # lowercase are presnt in the string
+print(y)
+# will print ['a', 'o', 'i', 'e', 'u', 'e', 'a', 'e', 'a'] 
+
+print('--- Warning: Greedy Matching ---')
+# Warning: Greedy Matching
+
+# The repeat characters (* and +) push outward in both directions (greedy) to match the largest possible string
+
+x = 'From: Using the : character'
+y = re.findall('^F.+:', x)
+print(y)
+# will print ['From: Using the :']
