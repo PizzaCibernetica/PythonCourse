@@ -183,7 +183,7 @@ c = {'a':10, 'b':1, 'c':22}
 
 print( sorted( [ (v,k) in c.items() ] ) )
 
-https://wiki.python.org/moin/HowTo/Sorting/
+# https://wiki.python.org/moin/HowTo/Sorting/
 
 # Print the most common words in a file 
 
@@ -193,7 +193,7 @@ counts = dict()
 for line in fhand:
     words = line.split()
     for word in words:
-        counts[words] = counts.get(word, 0) + 1 # idiom to make histagram
+        counts[words] = counts.get(word, 0) + 1 # idiom to make histogram
 # ------------------ we have the histogram now ---------------------
 lst = list()
 for key,val in counts.items():
@@ -214,7 +214,7 @@ print( sorted( [ (v,k) in c.items() ] ) )
 
 # list comprehension creates a dynamic list. In this case, we make a list of reversed tuples and then sort it.
 
-https://wiki.python.org/moin/HowTo/Sorting/
+# https://wiki.python.org/moin/HowTo/Sorting/
 
 
 # Exercize 10.2
@@ -225,18 +225,25 @@ if len(name) < 1:
 handle = open(name)
 
 hours = dict()
-for line in fhand:
+for line in handle:
     line = line.strip()
+
     if line.startswith("From "):
-        wds = line.split()
-        hour = wds[5].split(":")[0]
+        words = line.split()
+        hour = words[5].split(':')[0]
         hours[hour] = hours.get(hour,0)+1
 
-lst=list()
-for k,v in hours.items():
-    new=(k,v)
-    lst.append(new)
+lst = list()
+for key,val in hours.items():
+    newtup = (val, key)
+    lst.append(newtup)
+# ------------------ now we have a list of tuples, value/key order
+lst = sorted(lst, reverse=False)
+# -------------- now we have a sorted  list -------------------------
+for key, val in lst:   
+    print(val,key)          # print it in order by  value, key
 
-lst = sorted(lst,reverse=False)
-for k,v in lst:
-    print(k,v)
+
+
+
+    
