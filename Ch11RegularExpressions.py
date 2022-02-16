@@ -177,9 +177,75 @@ print(y)
 print('--- Warning: Greedy Matching ---')
 # Warning: Greedy Matching
 
+# with greedy matching we get the larger of the two
+# Greedy = tending to teh longest string (every time it have a choice it will pick the longest)
 # The repeat characters (* and +) push outward in both directions (greedy) to match the largest possible string
 
 x = 'From: Using the : character'
 y = re.findall('^F.+:', x)
 print(y)
 # will print ['From: Using the :']
+
+# ^F    first character in the match is an F      
+# .+    one or more characters
+# :     last character in the match
+
+# Non-Greedy Matching
+print('--- Non-Greedy Matching ---')
+
+# you can suppress the greedy behaviour
+# Not all regular expression repeat codes are greedy!  If you add a ? character, the + and * chill out a bit...
+
+
+x = 'From: Using the : character'
+y = re.findall('^F.+?:', x) # ==> added a ?
+print(y)
+# will print ['From:']
+
+# ^F    first character in the match is an F
+# .+?   one or more characters but not greedy
+# :     last character in the match is a :
+
+# Fine-Tuning String Extraction
+print('--- Fine-Tuning String Extraction ---')
+
+# You can refine the match for re.findall() and separately determine which 
+# portion of the match is to be extracted by using parentheses
+
+
+x = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+
+y = re.findall('\S+@\S+',x)
+print(y)
+# will print ['stephen.marquard@uct.ac.za’]
+
+# \S+   at least one non-whitespace character
+# @     @ sign
+# \S+   at least one non-whitespace character
+
+# \S+@\S+ => it is looking for a @ character that have a non-whitespace character on both sides  
+
+# We can fine tune even further with parenteses
+# Parentheses are not part of the match - but they tell where to start and stop what string to extract
+
+
+y = re.findall('^From (\S+@\S+)',x) # ==> parentheses is code for when start extraction and when to end extraction
+print(y)
+# will print ['stephen.marquard@uct.ac.za']
+# ^From (\S+@\S+) ==> it will look for lines that begin with FROM but it will not include from in the extraction
+
+# String Parsing Examples…
+print('--- String Parsing Examples… ---')
+
+# These are more practical application of regex
+
+data = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+atpos = data.find('@')
+print(atpos)
+# will print 21
+sppos = data.find(' ',atpos)
+print(sppos)
+# will print 31
+host = data[atpos+1 : sppos]
+print(host)
+ # will print uct.ac.za
