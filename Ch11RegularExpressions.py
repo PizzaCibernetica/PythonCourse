@@ -239,13 +239,113 @@ print('--- String Parsing Examples… ---')
 
 # These are more practical application of regex
 
+# String Slicing
+print('--- We used String Slicing ---')
+# Extracting a host name - using find and string slicing
+
 data = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
-atpos = data.find('@')
+atpos = data.find('@')  # find the @
 print(atpos)
-# will print 21
-sppos = data.find(' ',atpos)
+# will print 21 - the position of @
+sppos = data.find(' ',atpos)    # find the space after the @
 print(sppos)
-# will print 31
-host = data[atpos+1 : sppos]
+# will print 31 - the position of the space
+host = data[atpos+1 : sppos]    # extract just after the @ (atpos+1) until the space (not included)
 print(host)
  # will print uct.ac.za
+
+
+# The Double Split Pattern
+print('--- We used The Double Split Pattern ---')
+# Sometimes we split a line one way, and then grab one of the pieces of the line and split that piece again
+ # much cleaner and reliable than the string slicing
+line = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+words = line.split()
+email = words[1]
+pieces = email.split('@')
+print(pieces[1])
+# will  print uct.ac.za
+
+# The Regex Version
+print('--- The Regex Version ---')
+
+# import re 
+lin = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+y = re.findall('@([^ ]*)',lin)      
+print(y)
+
+# will print ['uct.ac.za']
+
+#   @([^ ]*)
+# @     Look through the string until you find an @ sign
+# [^ ]  Match non-blank character - everything but blank
+# *     match many of them 
+
+# ([^ ]*)   ==> Extract the non-blank characters
+
+
+# Even Cooler Regex Version
+print('--- Even Cooler Regex Version ---')
+
+lin = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+y = re.findall('^From .*@([^ ]*)',lin)
+print(y)
+
+# will print ['uct.ac.za']
+
+
+# '^From .*@([^ ]*)'
+
+# we also want to pick the line => ^From  ==> Starting at the beginning of the line, look for the string 'From ' 
+# .*    => any number of characters 
+# @     => look for a @ sign
+# ([^ ]*)   ==> then start extracting until the non-blank characters
+
+
+# Spam Confidence
+print('--- Spam Confidence ---')
+
+
+hand = open('mbox-short.txt')
+numlist = list()
+for line in hand:
+    line = line.rstrip()
+    stuff = re.findall('^X-DSPAM-Confidence: ([0-9.]+)', line)
+    if len(stuff) != 1 :  continue
+    num = float(stuff[0])
+    numlist.append(num)
+print('Maximum:', max(numlist))
+
+
+# Escape Character
+print('--- Escape Character ---')
+
+# If you want a special regular expression character to just behave normally (most of the time) you prefix it with '\'
+
+x = 'We just received $10.00 for cookies.'
+y = re.findall('\$[0-9.]+',x)       # ==> \$ will look for a real $ sign
+print(y)
+# will print ['$10.00']
+
+
+
+
+
+
+
+
+
+# Exercize 
+
+hand = open('regex_sum_42.txt')
+numlist = list()
+count = 0
+for line in hand:
+    words = line.rstrip()
+    stuff = re.findall('([0-9]+)', words)
+    if len(stuff) != 1 :  continue
+    count = count + 1
+    num = float(stuff[0])
+    numlist.append(num)
+print('Sum is :', sum(numlist))
+print('count is ', count)
