@@ -335,17 +335,23 @@ print(y)
 
 
 
-# Exercize 
+# Exercize 11
 
-hand = open('regex_sum_42.txt')
+hand = open('regex_sum_1476324.txt')
 numlist = list()
-count = 0
 for line in hand:
-    words = line.rstrip()
-    stuff = re.findall('([0-9]+)', words)
-    if len(stuff) != 1 :  continue
-    count = count + 1
-    num = float(stuff[0])
-    numlist.append(num)
+    line = line.rstrip()
+    numbers = re.findall('[0-9]+', line)
+    for number in numbers:
+        num = int(number)
+        numlist.append(num)
+
 print('Sum is :', sum(numlist))
-print('count is ', count)
+
+
+
+
+# Bonus Exercize --- write the solution in one line
+print( 'The sum in one line is' , sum(  [ int(i) for i in re.findall('[0-9]+',open('regex_sum_1476324.txt').read()) ] ) )
+
+
