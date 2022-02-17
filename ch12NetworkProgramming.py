@@ -25,5 +25,6 @@ mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 mysock.connect( ('data.pr4e.org', 80) )
 # this socket object, now makes the connection across the internet to the 'address' and 'port number' 
 
-if mysock.
 
+# Application protocol
+print('--- Application Protocol ---')
