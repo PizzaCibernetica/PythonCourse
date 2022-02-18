@@ -151,12 +151,99 @@ print('--- About Characters and Strings… ---')
 # We refer to "8 bits of memory as a "byte" of memory – (i.e. my disk drive contains 3 Terabytes of memory)
 # The ord() function tells us the numeric value of a simple ASCII character
 
+# the ordinal representation of = ord()
+
 print(ord('H'))
 # will print 72
 print(ord('e'))
 # will print 101
 print(ord('\n'))
 # will print 10
+
+
+
+# ASCII was uni-byte characters set, ok to use in the 60s
+# not enough in the 70s and later years
+# adoption of Unicode  
+# https://unicode.org/charts/
+
+
+# Multi-Byte Characters
+
+# To represent the wide range of characters computers must handle we represent characters with more than one byte
+#   UTF-16 – Fixed length - Two bytes       (compressed set - a subset of unicode)
+#   UTF-32 – Fixed Length - Four Bytes      (too large - the whole set of unicode)
+#   UTF-8 – 1-4 bytes:                      (best practice to be used - dynamic lenght)
+#       -  Upwards compatible with ASCII ( ASCII is 1 byte)
+#       -  Automatic detection between ASCII and UTF-8
+#       -  UTF-8 is recommended practice for encoding data to be exchanged between systems
+
+# Two Kinds of Strings in Python
+
+# In Python 3, all strings are Unicode
+
+
+# Python 3 and Unicode
+
+# In Python 3, all strings internally are UNICODE 
+# Working with string variables in Python programs and reading data from files usually "just works"
+# When we talk to a network resource using sockets or talk to a database we have to encode and decode data (usually to UTF-8)
+
+# Python 3.5.1
+# >>> x = b'abc'
+# >>> type(x)
+# <class 'bytes'>
+# >>> x = '이광춘'
+# >>> type(x)
+# <class 'str'>
+# >>> x = u'이광춘'
+# >>> type(x)
+# <class 'str'>
+
+# when connecting to the internet and using sockets we have to be aware that there might be other encoding
+
+# Python Strings to Bytes
+
+# When we talk to an external resource like a network socket we send bytes,
+#  so we need to encode Python 3 strings into a given character encoding
+
+# When we read data from an external resource, we must decode it based on the character set
+#  so it is properly represented in Python 3 as a string
+
+# while True:
+#     data = mysock.recv(512)
+#     if ( len(data) < 1 ) :
+#         break
+#     mystring = data.decode()
+#     print(mystring)
+
+
+# An HTTP Request in Python
+
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()    # <== encoding
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())                                            # <== decode
+mysock.close()
+
+
+# Making HTTP Easier With urllib
+print('--- Using urllib in Python ---')
+
+# Since HTTP is so common, we have a library that does all the socket work for us and makes web pages look like a file
+
+
+
+
+
 
 
 
