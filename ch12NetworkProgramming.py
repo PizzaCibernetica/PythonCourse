@@ -72,6 +72,7 @@ print('--- Application Protocol ---')
 #   - Standards are called “RFCs” - “Request for Comments” (meaning they are always looking for imput to better the standard)
 
 # RFC 2616 defines the HTTP protocol
+# https://datatracker.ietf.org/doc/html/rfc2616
 
 # Making an HTTP request
 
@@ -79,5 +80,62 @@ print('--- Application Protocol ---')
 #   Request a document (or the default document)
 #       GET http://www.dr-chuck.com/page1.htm HTTP/1.0
 #       GET http://www.mlive.com/ann-arbor/ HTTP/1.0
+
 #       GET     http://www.facebook.com     HTTP/1.0
 #    Method     -Resource identifier-       protocol version 
+#          1 space                     1 space
+#  it requires only one space between method, resurce id, and protocol
+
+
+# telnet www.dr-chuck.com 80
+# telnet is a protocol not in use anymore 
+# but in practice , it opens a socket
+# then we aill need a HTTP request
+# GET http://www.dr-chuck.com/page1.htm HTTP/1.0
+# (better to copy and paste because if we type that in the computer my close the connection)
+# press return twice
+
+
+# writing a web browser with python
+
+# An HTTP Request in Python
+
+# create a socket and connect
+import socket           
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+
+# create the request and send it                # two return lines
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+mysock.send(cmd)
+
+
+while True:
+    data = mysock.recv(512) # RECEIVE the data 512 characters at the time
+    if (len(data) < 1):
+        break
+    print(data.decode(),end='')
+mysock.close()
+
+# This will be the result printed
+# first the HTTP header
+#  
+# HTTP/1.1 200 OK
+# Date: Fri, 18 Feb 2022 19:08:42 GMT
+# Server: Apache/2.4.18 (Ubuntu)
+# Last-Modified: Sat, 13 May 2017 11:22:22 GMT
+# ETag: "a7-54f6609245537"
+# Accept-Ranges: bytes
+# Content-Length: 167
+# Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+# Pragma: no-cache
+# Expires: Wed, 11 Jan 1984 05:00:00 GMT
+# Connection: close
+# Content-Type: text/plain
+
+# followed by the HTTP body
+
+# But soft what light through yonder window breaks
+# It is the east and Juliet is the sun
+# Arise fair sun and kill the envious moon
+# Who is already sick and pale with grief
