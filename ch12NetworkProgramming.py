@@ -28,3 +28,24 @@ mysock.connect( ('data.pr4e.org', 80) )
 
 # Application protocol
 print('--- Application Protocol ---')
+
+# Since TCP (and Python) gives us a reliable socket, what do we want to do with the socket?  What problem do we want to solve?
+#   Application Protocols
+#       -  Mail
+#       -  World Wide Web
+
+
+# HTTP - Hypertext Transfer Protocol
+# The dominant Application Layer Protocol on the Internet
+# Invented for the Web - to Retrieve HTML,  Images, Documents, etc.
+# Extended to retrieve data in addition to documents - RSS, Web Services, etc.  
+# Basic Concept - Make a Connection - Request a document - Retrieve the Document - Close the Connection
+
+# The HyperText Transfer Protocol is the set of rules to allow browsers
+#  to retrieve web documents from servers over the Internet
+
+# What is a Protocol?
+# A set of rules that all parties follow so we can predict each other’s behavior
+# And not bump into each other
+#   - On two-way roads in USA, drive on the right-hand side of the road
+#   - On two-way roads in the UK, drive on the left-hand side of the road
