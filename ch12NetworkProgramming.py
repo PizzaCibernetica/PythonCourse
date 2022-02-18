@@ -145,6 +145,19 @@ mysock.close()
 # About Characters and Strings…
 print('--- About Characters and Strings… ---')
 
+# Representing Simple Strings
+
+# Each character is represented by a number between 0 and 256 stored in 8 bits of memory 
+# We refer to "8 bits of memory as a "byte" of memory – (i.e. my disk drive contains 3 Terabytes of memory)
+# The ord() function tells us the numeric value of a simple ASCII character
+
+print(ord('H'))
+# will print 72
+print(ord('e'))
+# will print 101
+print(ord('\n'))
+# will print 10
+
 
 
 
