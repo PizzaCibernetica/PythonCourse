@@ -284,6 +284,25 @@ for line in fhand:
     print(line.decode().strip())
 
 
+# Parsing HTML (a.k.a. Web Scraping)
+print('\n--- Parsing HTML (a.k.a. Web Scraping) ---\n')
+
+# What is Web Scraping?
+# When a program or script pretends to be a browser and retrieves web pages,
+#  looks at those web pages, extracts information, and then looks at more web pages
+# Search engines scrape web pages - we call this “spidering the web” or “web crawling”
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
