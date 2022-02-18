@@ -71,4 +71,13 @@ print('--- Application Protocol ---')
 #   - www.ietf.org
 #   - Standards are called “RFCs” - “Request for Comments” (meaning they are always looking for imput to better the standard)
 
+# RFC 2616 defines the HTTP protocol
 
+# Making an HTTP request
+
+#   Connect to the server like www.dr-chuck.com"
+#   Request a document (or the default document)
+#       GET http://www.dr-chuck.com/page1.htm HTTP/1.0
+#       GET http://www.mlive.com/ann-arbor/ HTTP/1.0
+#       GET     http://www.facebook.com     HTTP/1.0
+#    Method     -Resource identifier-       protocol version 
