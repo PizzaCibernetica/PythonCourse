@@ -97,7 +97,7 @@ print('--- Application Protocol ---')
 
 
 # writing a web browser with python
-
+print('--- writing a web browser with python ---')
 # An HTTP Request in Python
 
 # create a socket and connect
@@ -139,3 +139,44 @@ mysock.close()
 # It is the east and Juliet is the sun
 # Arise fair sun and kill the envious moon
 # Who is already sick and pale with grief
+
+
+
+# About Characters and Strings…
+print('--- About Characters and Strings… ---')
+
+
+
+
+
+# Exercize 1 - request-response cycle
+
+# create a socket and connect
+import socket           
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+
+# create the request and send it                # two return lines
+cmd = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n'.encode()
+mysock.send(cmd)
+
+
+while True:
+    data = mysock.recv(512) # RECEIVE the data 512 characters at the time
+    if (len(data) < 1):
+        break
+    print(data.decode(),end='')
+mysock.close()
+
+# HTTP/1.1 200 OK
+# Date: Fri, 18 Feb 2022 19:21:16 GMT
+# Server: Apache/2.4.18 (Ubuntu)
+# Last-Modified: Sat, 13 May 2017 11:22:22 GMT
+# ETag: "1d3-54f6609240717"
+# Accept-Ranges: bytes
+# Content-Length: 467
+# Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+# Pragma: no-cache
+# Expires: Wed, 11 Jan 1984 05:00:00 GMT
+# Connection: close
+# Content-Type: text/plain
