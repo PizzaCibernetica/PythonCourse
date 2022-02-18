@@ -49,3 +49,26 @@ print('--- Application Protocol ---')
 # And not bump into each other
 #   - On two-way roads in USA, drive on the right-hand side of the road
 #   - On two-way roads in the UK, drive on the left-hand side of the road
+
+# a URL (uniformed resource locator) has in them a
+# protocol              host                    document
+# http://       www.websiteaddress.com          /page1.html
+
+
+# Getting Data From The Server
+
+# Each time the user clicks on an anchor tag with an href= value to switch to a new page,
+#  the browser makes a connection to the web server and issues a “GET” request -
+#  to GET the content of the page at the specified URL
+
+# The server returns the HTML document to the browser, which formats and displays the document to the user
+
+
+# Internet Standards
+
+# The standards for all of the Internet protocols (inner workings) are developed by an organization
+#   - Internet Engineering Task Force (IETF)
+#   - www.ietf.org
+#   - Standards are called “RFCs” - “Request for Comments” (meaning they are always looking for imput to better the standard)
+
+
