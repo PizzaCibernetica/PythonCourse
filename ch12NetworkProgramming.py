@@ -236,20 +236,58 @@ mysock.close()
 
 
 # Making HTTP Easier With urllib
-print('--- Using urllib in Python ---')
+print('--- Using urllib in Python ---\n')
 
 # Since HTTP is so common, we have a library that does all the socket work for us and makes web pages look like a file
 
+# urllib is a library that combine the idea of:
+# opening a connection,
+#  sending the GET request,
+#  sending the newline,
+#  retrieving the stuff,
+#  breaking the header stuff 
+
+
+import urllib.request, urllib.parse, urllib.error       # we have to import the library
+
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+for line in fhand:
+    print(line.decode().strip())
+
+# there is no header
 
 
 
+# You can treat it like a File...
+
+import urllib.request, urllib.parse, urllib.error
+
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+
+counts = dict()                     # make a dictionary 
+for line in fhand:                  # loop through 
+    words = line.decode().split()   # remember to decode
+
+    # word by word create a dictionary
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+print(counts)
 
 
+#Reading Web Pages
+print('-- Reading Web Pages --\n')
+
+import urllib.request, urllib.parse, urllib.error
+
+fhand = urllib.request.urlopen('http://www.dr-chuck.com/page1.htm')
+for line in fhand:
+    print(line.decode().strip())
 
 
 
 
 # Exercize 1 - request-response cycle
+print('--- Exercize 1 ---\n')
 
 # create a socket and connect
 import socket           
