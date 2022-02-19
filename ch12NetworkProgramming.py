@@ -325,7 +325,7 @@ print('\n--- Parsing HTML (a.k.a. Web Scraping) ---\n')
 # import urllib.request, urllib.parse, urllib.error
 # from bs4 import BeautifulSoup
 
-
+print('\n--- BeautifulSoup ---\n')
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup                       # inport BeautifulSoup
 
