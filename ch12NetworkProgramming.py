@@ -422,11 +422,23 @@ print('\n--- Exrcize 3: Following links with python ---\n')
 
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup                       # inport BeautifulSoup
+import ssl      
+
+# ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 url = input('Enter URL:')                             # Enter the URL
-html = urllib.request.urlopen(url).read()           # read the whole thing (we are not looping)
+html = urllib.request.urlopen(url, context=ctx).read()  # read the whole thing (we are not looping) # we have to add the context=ctx
+# we now have a long strings saved into "html" with \n characters at the end of each line
 soup = BeautifulSoup(html, 'html.parser')           # will parse and give back a soup object
 
 count = input('Enter count:')
 position = input('Enter position:')
 
+# Retrieve all of the anchor tags
+tags = soup('a')
+for tag in tags:
+    url = tag.get('href', None)
+    print(url)
