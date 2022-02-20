@@ -391,6 +391,31 @@ mysock.close()
 # Content-Type: text/plain
 
 
+# Exercize 2 - Scraping Numbers
+print('\n--- Scraping Numbers ---\n')
 
 
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup                       # inport BeautifulSoup
+
+url = input('Enter - ')                             # Enter the URL
+html = urllib.request.urlopen(url).read()           # read the whole thing (we are not looping)
+soup = BeautifulSoup(html, 'html.parser')           # will parse and give back a soup object
+
+# Retrieve all of the anchor tags
+tags = soup('span')                                 # create a list of tags
+count = 0       # count variable
+total = 0       # total variable
+for tag in tags:
+    num = int(tag.string)   # retrieve the content of the tag (string), convert it to an integer, save it into num
+    
+    total = total + num
+    count = count + 1
+
+
+print('Count',count)
+print('Sum',total)
+
+# Exercize 3 - Following links with python
+print('\n--- Exrcize 3: Following links with python ---\n')
 
