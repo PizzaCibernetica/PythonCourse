@@ -419,3 +419,14 @@ print('Sum',total)
 # Exercize 3 - Following links with python
 print('\n--- Exrcize 3: Following links with python ---\n')
 
+
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup                       # inport BeautifulSoup
+
+url = input('Enter URL:')                             # Enter the URL
+html = urllib.request.urlopen(url).read()           # read the whole thing (we are not looping)
+soup = BeautifulSoup(html, 'html.parser')           # will parse and give back a soup object
+
+count = input('Enter count:')
+position = input('Enter position:')
+
