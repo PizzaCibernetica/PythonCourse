@@ -16,6 +16,7 @@ print('--- Sockets in Pythons ---')
 
 # python has built-in support for TCP Sockets
 import socket
+from timeit import repeat
 
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # we are going to make a socket that goes through the internet 'socket.AF_INET',
@@ -429,16 +430,23 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = input('Enter URL:')                             # Enter the URL
-html = urllib.request.urlopen(url, context=ctx).read()  # read the whole thing (we are not looping) # we have to add the context=ctx
-# we now have a long strings saved into "html" with \n characters at the end of each line
-soup = BeautifulSoup(html, 'html.parser')           # will parse and give back a soup object
+url = input('Enter URL: ')                             # Enter the URL
+repeat = int(input('Enter repeat: '))
+# print('repeat:', repeat)
 
-count = input('Enter count:')
-position = input('Enter position:')
+position = int(input('Enter position: '))
+# print('position:',position)
 
-# Retrieve all of the anchor tags
-tags = soup('a')
-for tag in tags:
-    url = tag.get('href', None)
-    print(url)
+for i in range(repeat):
+    html = urllib.request.urlopen(url, context=ctx).read()  # read the whole thing (we are not looping) # we have to add the context=ctx
+    # we now have a long strings saved into "html" with \n characters at the end of each line
+    soup = BeautifulSoup(html, 'html.parser')           # will parse and give back a soup object
+    #print('-------- iteration ', (i+1),'---------')
+
+    # Retrieve all of the anchor tags
+    tags = soup('a')
+    for tag in tags[:position]:
+        url = tag.get('href', None)    
+        name = tag.string
+    print('Retrieving:',url)     
+print('The answer to the assignment for this execution is:',name)
