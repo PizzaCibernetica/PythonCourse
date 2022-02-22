@@ -50,3 +50,51 @@ print('---  Web Services  ---')
 
 # White Space
 # Line ends do not matter.  White space is generally discarded on text elements.  We indent only to be readable.
+# XML doesn't care about white spaces other than in the text area
+
+# XML Terminology
+# Tags indicate the beginning and ending of elements
+# Attributes - Keyword/value pairs on the opening tag of XML
+# Serialize / De-Serialize - Convert data in one program into a common format that can
+#  be stored and/or transmitted between systems in a programming language-independent manner
+
+
+# hierarchical structure in XML 
+# parent nodes and child nodes
+
+# complex element (a tag that include other tags)
+# <person>
+#   <name>Noah</name>
+#   <phone>622 7421</phone>
+# </person>
+
+# simple element (a tag that include data)
+#   <name>Chuck</name>
+#   <phone>303 4456</phone>
+
+
+# XML as a tree
+
+# you can only have one text node
+# you can have several attribute nodes
+
+#               A
+#             /   \
+#            B     C
+#           !     /  \
+#           X    D    E
+#                !    !
+#                Y    Z
+
+# XML as Paths
+
+#   /a/b   = path to x
+#   /a/c/d = path to y
+#   /a/c/e = path to z
+
+
+
+# XML Schema
+# Describing a “contract” as to what is acceptable XML
+
+
