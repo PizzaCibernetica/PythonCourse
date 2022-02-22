@@ -172,6 +172,8 @@ print('---  Web Services  ---')
 
 # first example 
 
+from cgi import print_environ
+from itertools import count
 import xml.etree.ElementTree as ET      # element tree
 
 # the ''' 3 quotes is a way to ignore every other ' "  in between - similar to read a whole file
@@ -238,12 +240,12 @@ data = '''{
 info = json.loads(data)         # loads = load from string
 # info is a dictionary becuase of { }
 print('Name:',info["name"])
-print('Hide:',info["email"]["hide"])
+print('Hide:',info["email"]["hide"])    # info sub email sub hide
 # JSON represents data as nested “lists” and “dictionaries”
 
 # JSON example 2
 import json
-input = '''[        
+jsondata = '''[        
   { "id" : "001",
     "x" : "2",
     "name" : "Chuck"
@@ -254,9 +256,9 @@ input = '''[
   }
 ]'''
 
-info = json.loads(input)
+info = json.loads(jsondata)
 # info is a list [] of 2 items, dictionaries {}
-print('User count:', len(info))
+print('User count:', len(jsondata))
 for item in info:
     print('Name', item['name'])
     print('Id', item['id'])
@@ -266,23 +268,46 @@ for item in info:
 
 
 # Exercize 1 - Extracting data from XML
-print('--- Ex 1 - Extracting data from XML ---')
+# print('--- Ex 1 - Extracting data from XML ---')
 
-import xml.etree.ElementTree as ET  
+# import xml.etree.ElementTree as ET  
+# import urllib.request, urllib.parse, urllib.error
+
+# url = input('Enter location:')                             # prompt to enter the URL
+
+# print('Retrieving ', url)
+# xmldata = urllib.request.urlopen(url).read()  
+
+# tree = ET.fromstring(xmldata)
+# counts = tree.findall('.//count')
+# print('Count:', len(counts))            # get the numbers of elements
+# sum = 0
+
+# for count in counts:
+#     sum = sum + int(count.text)
+
+# print('Sum:',sum)
+    
+
+# Exercize 2 - Extracting Data from JSON
+print('--- Extracting Data from JSON ---')
+
+import json 
 import urllib.request, urllib.parse, urllib.error
 
 url = input('Enter location:')                             # prompt to enter the URL
 
 print('Retrieving ', url)
-xmldata = urllib.request.urlopen(url).read()  
+jsondata = urllib.request.urlopen(url).read()  
 
-tree = ET.fromstring(xmldata)
-counts = tree.findall('.//count')
-print('Count:', len(counts))            # get the numbers of elements
+infoJson = json.loads(jsondata)
+
 sum = 0
+count = 0
 
-for count in counts:
-    sum = sum + int(count.text)
-
-print('Sum:',sum)
+for whatever in infoJson['comments']:
+    sum = sum + int(whatever['count'])
+    count = count + 1
     
+print('Count:',count)
+print('Sum:',sum)
