@@ -141,3 +141,30 @@ print('---  Web Services  ---')
 # It is often called “W3C Schema” because “Schema” is considered generic
 # More commonly it is called XSD because the file names end in .xsd
 # http://www.w3.org/XML/Schema
+
+
+# XSD Structure
+
+# xs:element        => simple element  <xs:element name="lastname" type="xs:string"/>
+#                                       <lastname>Sever</lastname>
+# xs:sequence       => indicate a sequence of elements
+#
+# xs:complexType    => <xs:complexType name=”person”>
+#                       <person>
+
+
+# XSD Constraints
+# attributes like   minOccurs="1"  or   maxOccurs="1"
+# if the ekement happens twice => error
+
+
+# XSD Data Types
+
+# < xs:element name="customer" type="xs:string"/>       just a string, like a name
+# <xs:element name="start" type="xs:date"/>             a date , like 2022-02-28 
+# <xs:element name="startdate" type="xs:dateTime"/>     date and time, like 2022-02-28T09:30:10Z
+# <xs:element name="prize" type="xs:decimal"/>          decimals, 0.0234
+# <xs:element name="weeks" type="xs:integer"/>          integer
+
+# It is common to represent time in UTC/GMT, given that servers are often scattered around the world
+# Z at the end of the date time means UTC/GMT  (greenwitch time or ZULU time)
