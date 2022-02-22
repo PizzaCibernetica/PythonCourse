@@ -211,17 +211,61 @@ for item in lst:
     print('Attribute', item.get("x"))
 
 
+# JavaScript Object Notation
+print('---   JavaScript Object Notation   ---')
+
+
+# XML better for high hierarchical documents
+# JSON better for pulling out data without much fuss
+
+# JSON is not an RFC or a framework, it's just derived from JavaScript
+# https://www.json.org/json-en.html
+
+
+# JSON example 1
+import json
+data = '''{
+  "name" : "Chuck",
+  "phone" : {
+    "type" : "intl",
+    "number" : "+1 734 303 4456"
+   },
+   "email" : {
+     "hide" : "yes"
+   }
+}'''
+
+info = json.loads(data)         # loads = load from string
+# info is a dictionary becuase of { }
+print('Name:',info["name"])
+print('Hide:',info["email"]["hide"])
+# JSON represents data as nested “lists” and “dictionaries”
+
+# JSON example 2
+import json
+input = '''[        
+  { "id" : "001",
+    "x" : "2",
+    "name" : "Chuck"
+  } ,
+  { "id" : "009",
+    "x" : "7",
+    "name" : "Chuck"
+  }
+]'''
+
+info = json.loads(input)
+# info is a list [] of 2 items, dictionaries {}
+print('User count:', len(info))
+for item in info:
+    print('Name', item['name'])
+    print('Id', item['id'])
+    print('Attribute', item['x'])
 
 
 
 
-
-
-
-
-
-
-# Extracting data from XML
+# Exercize 1 - Extracting data from XML
 print('--- Ex 1 - Extracting data from XML ---')
 
 import xml.etree.ElementTree as ET  
