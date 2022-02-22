@@ -97,4 +97,47 @@ print('---  Web Services  ---')
 # XML Schema
 # Describing a “contract” as to what is acceptable XML
 
+# Description of the legal format of an XML document
+# Expressed in terms of constraints on the structure and content of documents
+# Often used to specify a “contract” between systems - “My system will only accept XML that conforms to this particular Schema.”
+# If a particular piece of XML meets the specification of the Schema - it is said to “validate”
 
+
+# XML document          - sent to \
+#                                 XML validator (which make sure teh document follows the schema contract)
+# XML schema contract   - sent to /
+
+
+# XML Document example
+# <person>
+#    <lastname>Severance</lastname>
+#    <age>17</age>
+#    <dateborn>2001-04-17</dateborn>
+# </person>
+
+# XML Schema Contract example 
+# <xs:complexType name=”person”>
+#   <xs:sequence>
+#     <xs:element name="lastname" type="xs:string"/>
+#     <xs:element name="age" type="xs:integer"/>
+#     <xs:element name="dateborn" type="xs:date"/>
+#    </xs:sequence>
+# </xs:complexType>
+
+# XML schema is a partincular format of XML 
+
+# Many XML Schema Languages
+# Document Type Definition (DTD)
+# -  http://en.wikipedia.org/wiki/Document_Type_Definition
+# Standard Generalized Markup Language (ISO 8879:1986 SGML)
+# -  http://en.wikipedia.org/wiki/SGML
+# XML Schema  from W3C - (XSD)
+# -  http://en.wikipedia.org/wiki/XML_Schema_(W3C)
+
+
+
+# XSD XML Schema (W3C spec)
+# We will focus on the World Wide Web Consortium (W3C) version
+# It is often called “W3C Schema” because “Schema” is considered generic
+# More commonly it is called XSD because the file names end in .xsd
+# http://www.w3.org/XML/Schema
