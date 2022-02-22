@@ -168,3 +168,77 @@ print('---  Web Services  ---')
 
 # It is common to represent time in UTC/GMT, given that servers are often scattered around the world
 # Z at the end of the date time means UTC/GMT  (greenwitch time or ZULU time)
+
+
+# first example 
+
+import xml.etree.ElementTree as ET      # element tree
+
+# the ''' 3 quotes is a way to ignore every other ' "  in between - similar to read a whole file
+data = '''<person>          
+  <name>Chuck</name>
+  <phone type="intl">
+     +1 734 303 4456
+   </phone>
+   <email hide="yes"/>
+</person>'''
+
+tree = ET.fromstring(data) # create a nobject (tree) that we can query later on
+print('Name:',tree.find('name').text)           # tree.find the tag  name and get the text of it
+print('Attr:',tree.find('email').get('hide'))   # 
+
+# second example 
+import xml.etree.ElementTree as ET
+inputdata = '''<stuff>
+    <users>
+        <user x="2">
+            <id>001</id>
+            <name>Chuck</name>
+        </user>
+        <user x="7">
+            <id>009</id>
+            <name>Brent</name>
+        </user>
+    </users>
+</stuff>'''
+
+stuff = ET.fromstring(inputdata)
+lst = stuff.findall('users/user')
+print('User count:', len(lst))
+for item in lst:
+    print('Name', item.find('name').text)
+    print('Id', item.find('id').text)
+    print('Attribute', item.get("x"))
+
+
+
+
+
+
+
+
+
+
+
+
+# Extracting data from XML
+print('--- Ex 1 - Extracting data from XML ---')
+
+import xml.etree.ElementTree as ET  
+import urllib.request, urllib.parse, urllib.error
+
+url = input('Enter location:')                             # prompt to enter the URL
+
+print('Retrieving ', url)
+xmldata = urllib.request.urlopen(url).read()  
+
+tree = ET.fromstring(xmldata)
+counts = tree.findall('.//count')
+print('Count:', len(counts))            # get the numbers of elements
+sum = 0
+
+for count in counts:
+    sum = sum + int(count.text)
+
+print('Sum:',sum)
+    
