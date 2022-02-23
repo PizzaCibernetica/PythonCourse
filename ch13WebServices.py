@@ -293,6 +293,88 @@ print('\n--- Application Program Interface ---\n')
 #   an “implementation” of the API.  An API is typically defined in terms of the
 #   programming language used to build an application. 
 
+# Google API documentation on GeoCoding
+# https://developers.google.com/maps/documentation/geocoding?hl=en
+
+# type this in 
+# http://maps.googleapis.com/maps/api/geocode/json?address=Ann+Arbor%2C+MI
+# goggle will give you back (after authentication and usage of API) a JSON like the following
+{
+    "status": "OK",
+     "results": [
+        {
+            "geometry": {
+                "location_type": "APPROXIMATE",
+                 "location": {
+                    "lat": 42.2808256,
+                     "lng": -83.7430378
+                }
+            },
+            "address_components": [
+                {
+                    "long_name": "Ann Arbor",
+                     "types": [
+                        "locality",
+                         "political"
+                    ],
+                    "short_name": "Ann Arbor"
+                }
+             ],
+             "formatted_address": "Ann Arbor, MI, USA",
+             "types": [
+                "locality",
+                "political"
+            ]
+        }
+    ]
+}
+
+# example of application to do the above
+# import urllib.request, urllib.parse, urllib.error
+# import json
+
+# serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+
+# while True:
+#     address = input('Enter location: ')
+#     if len(address) < 1: break
+
+#     url = serviceurl + urllib.parse.urlencode({'address': address})
+
+#     print('Retrieving', url)
+#     uh = urllib.request.urlopen(url)
+#     data = uh.read().decode()
+#     print('Retrieved', len(data), 'characters')
+
+#     try:
+#         js = json.loads(data)
+#     except:
+#         js = None
+
+#     if not js or 'status' not in js or js['status'] != 'OK':
+#         print('==== Failure To Retrieve ====')
+#         print(data)
+#         continue
+
+#     lat = js["results"][0]["geometry"]["location"]["lat"]
+#     lng = js["results"][0]["geometry"]["location"]["lng"]
+#     print('lat', lat, 'lng', lng)
+#     location = js['results'][0]['formatted_address']
+#     print(location)
+
+
+
+# API Security and Rate Limiting
+
+# The compute resources to run these APIs are not “free”
+# The data provided by these APIs is usually valuable
+# The data providers might limit the number of requests per day, demand an API “key”, or even charge for usage
+# They might change the rules as things progress...
+
+
+# Twitter
+# 
+
 
 
 # Exercize 1 - Extracting data from XML
@@ -318,24 +400,61 @@ print('\n--- Application Program Interface ---\n')
     
 
 # Exercize 2 - Extracting Data from JSON
-print('--- Extracting Data from JSON ---')
+# print('--- Extracting Data from JSON ---')
 
-import json 
-import urllib.request, urllib.parse, urllib.error
+# import json 
+# import urllib.request, urllib.parse, urllib.error
 
-url = input('Enter location:')                             # prompt to enter the URL
+# url = input('Enter location:')                             # prompt to enter the URL
 
-print('Retrieving ', url)
-jsondata = urllib.request.urlopen(url).read()  
+# print('Retrieving ', url)
+# jsondata = urllib.request.urlopen(url).read()  
 
-infoJson = json.loads(jsondata)
+# infoJson = json.loads(jsondata)
 
-sum = 0
-count = 0
+# sum = 0
+# count = 0
 
-for whatever in infoJson['comments']:
-    sum = sum + int(whatever['count'])
-    count = count + 1
+# for whatever in infoJson['comments']:
+#     sum = sum + int(whatever['count'])
+#     count = count + 1
     
-print('Count:',count)
-print('Sum:',sum)
+# print('Count:',count)
+# print('Sum:',sum)
+
+
+
+# Exercize 3 - Calling a JSON API
+print('--- Exercize 3 - Calling a JSON API ---')
+
+import urllib.request, urllib.parse, urllib.error
+import json
+
+serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1: break
+
+    url = serviceurl + urllib.parse.urlencode({'address': address})
+
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url)
+    data = uh.read().decode()
+    print('Retrieved', len(data), 'characters')
+
+    try:
+        js = json.loads(data)
+    except:
+        js = None
+
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print('==== Failure To Retrieve ====')
+        print(data)
+        continue
+
+    lat = js["results"][0]["geometry"]["location"]["lat"]
+    lng = js["results"][0]["geometry"]["location"]["lng"]
+    print('lat', lat, 'lng', lng)
+    location = js['results'][0]['formatted_address']
+    print(location)
