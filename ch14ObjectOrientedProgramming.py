@@ -42,3 +42,20 @@ print('---   Object-Oriented Programming   ---')
 #  Within the program, using a method usually affects only one particular object;
 #  all Dogs can bark, but you need only one particular dog to do the barking
 # Method and Message are often used interchangeably.
+
+
+# class is a reserved word
+
+
+class PartyAnimal:
+    x = 0
+
+    def party(self) :
+      self.x = self.x + 1
+      print("So far",self.x)
+
+an = PartyAnimal()
+
+an.party()
+an.party()
+an.party()
