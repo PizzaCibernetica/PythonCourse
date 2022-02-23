@@ -330,37 +330,37 @@ print('\n--- Application Program Interface ---\n')
 }
 
 # example of application to do the above
-# import urllib.request, urllib.parse, urllib.error
-# import json
+import urllib.request, urllib.parse, urllib.error
+import json
 
-# serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
 
-# while True:
-#     address = input('Enter location: ')
-#     if len(address) < 1: break
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1: break
 
-#     url = serviceurl + urllib.parse.urlencode({'address': address})
+    url = serviceurl + urllib.parse.urlencode({'address': address})
 
-#     print('Retrieving', url)
-#     uh = urllib.request.urlopen(url)
-#     data = uh.read().decode()
-#     print('Retrieved', len(data), 'characters')
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url)
+    data = uh.read().decode()
+    print('Retrieved', len(data), 'characters')
 
-#     try:
-#         js = json.loads(data)
-#     except:
-#         js = None
+    try:
+        js = json.loads(data)
+    except:
+        js = None
 
-#     if not js or 'status' not in js or js['status'] != 'OK':
-#         print('==== Failure To Retrieve ====')
-#         print(data)
-#         continue
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print('==== Failure To Retrieve ====')
+        print(data)
+        continue
 
-#     lat = js["results"][0]["geometry"]["location"]["lat"]
-#     lng = js["results"][0]["geometry"]["location"]["lng"]
-#     print('lat', lat, 'lng', lng)
-#     location = js['results'][0]['formatted_address']
-#     print(location)
+    lat = js["results"][0]["geometry"]["location"]["lat"]
+    lng = js["results"][0]["geometry"]["location"]["lng"]
+    print('lat', lat, 'lng', lng)
+    location = js['results'][0]['formatted_address']
+    print(location)
 
 
 
@@ -374,7 +374,80 @@ print('\n--- Application Program Interface ---\n')
 
 # Twitter
 # 
+import urllib.request, urllib.parse, urllib.error               # import URL library
+import twurl                                                    # import library to deal with twitter
+import json                                                     # import library to deal with JSON
 
+TWITTER_URL = 'https://api.twitter.com/1.1/friends/list.json'   # twitter API interface
+
+while True:
+    print('')
+    acct = input('Enter Twitter Account:')                      # ask for twitter account
+    if (len(acct) < 1): break                                   # if we hit "enter" we are gonna break out
+    url = twurl.augment(TWITTER_URL,                            # twurl will sign you in
+                        {'screen_name': acct, 'count': '5'})    # first 5 friends of this particular screen name
+    print('Retrieving', url)
+    connection = urllib.request.urlopen(url)                    # open the url
+    data = connection.read().decode()                           # decode the url
+    headers = dict(connection.getheaders())                     # url open hide the headers by default , we ask the headers now
+    print('Remaining', headers['x-rate-limit-remaining'])       # x-rate-limit-remaining => will telll me how many requests are left
+    js = json.loads(data)                                       # parse the JSON data 
+    print(json.dumps(js, indent=4))                             # print the data so we can debug it, indent=4 => to print in nice way easier to read and understand
+
+    for u in js['users']:
+        print(u['screen_name'])
+        s = u['status']['text']
+        print('  ', s[:50])
+
+# this is the out put
+
+Enter Twitter Account:drchuck
+Retrieving https://api.twitter.com/1.1/friends ...
+Remaining 14
+{
+    "users": [
+        {
+            "status": {
+                "text": "@jazzychad I just bought one .__.",
+                 "created_at": "Fri Sep 20 08:36:34 +0000 2013",
+             },
+             "location": "San Francisco, California",
+             "screen_name": "leahculver",
+             "name": "Leah Culver",
+         },
+         {
+            "status": {
+                "text": "RT @WSJ: Big employers like Google ...",
+                 "created_at": "Sat Sep 28 19:36:37 +0000 2013",
+             },
+             "location": "Victoria Canada",
+             "screen_name": "_valeriei",
+             "name": "Valerie Irvine",
+     ],
+}
+Leahculver
+   @jazzychad I just bought one .__._
+Valeriei
+   RT @WSJ: Big employers like Google, AT&amp;T are h
+Ericbollens
+   RT @lukew: sneak peek: my LONG take on the good &a
+halherzog 
+  Learning Objects is 10. We had a cake with the LO,
+
+# oAuth code
+
+import urllib
+import oauth
+import hidden
+
+def augment(url, parameters) :
+    secrets = hidden.oauth()
+    consumer = oauth.OAuthConsumer(secrets['consumer_key'], secrets['consumer_secret'])
+    token = oauth.OAuthToken(secrets['token_key'],secrets['token_secret'])
+    oauth_request = oauth.OAuthRequest.from_consumer_and_token(consumer,
+         token=token, http_method='GET', http_url=url, parameters=parameters)
+    oauth_request.sign_request(oauth.OAuthSignatureMethod_HMAC_SHA1(), consumer, token)
+    return oauth_request.to_url()
 
 
 # Exercize 1 - Extracting data from XML
