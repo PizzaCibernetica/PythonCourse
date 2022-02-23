@@ -59,3 +59,85 @@ an = PartyAnimal()
 an.party()
 an.party()
 an.party()
+
+# A Nerdy Way to Find Capabilities
+
+# The dir() command lists capabilities
+# Ignore the ones with underscores - these are used by Python itself
+# The rest are real operations that the object can perform
+# It is like type() - it tells us something *about* a variable
+
+y = list()
+type(y)
+# will print <class 'list'>
+dir(y)
+# will print ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__',
+#  '__doc__', … '__setitem__', '__setslice__', '__str__', 'append', 'clear', 'copy', 'count',
+#  'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+ 
+
+# We can use dir() to find the “capabilities” of our newly created class.
+# this is dir of the class we built before
+print("Dir", dir(an))
+
+
+
+# Playing with dir() and type()
+
+# The dir() command lists capabilities
+# Ignore the ones with underscores - these are used by Python itself
+# The rest are real operations that the object can perform
+# It is like type() - it tells us something *about* a variable
+
+
+
+# Try dir() with a String
+x = 'Hello there'
+dir(x)
+# will print ['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__',
+#  '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__',
+#  '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__repr__', '__rmod__',
+#  '__rmul__', '__setattr__', '__str__',
+#  'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find',
+#  'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join',
+#  'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
+#  'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+
+# Object Lifecycle
+print('--- Object Lifecycle ---')
+
+# Objects are created, used, and discarded
+# We have special blocks of code (methods) that get called
+#       -  At the moment of creation (constructor)
+#       -  At the moment of destruction (destructor)
+# Constructors are used a lot 
+# Destructors are seldom used
+
+
+# Constructor
+# The primary purpose of the constructor is to set up some instance variables
+#  to have the proper initial values when the object is created
+
+class PartyAnimal:
+   x = 0
+
+   def __init__(self):                  # constructor
+     print('I am constructed')
+
+   def party(self) :
+     self.x = self.x + 1
+     print('So far',self.x)
+
+   def __del__(self):                   # destructor
+     print('I am destructed', self.x)
+
+an = PartyAnimal()
+an.party()
+an.party()
+an = 42
+print('an contains',an)
+
+# The constructor and destructor are optional. The constructor is typically
+#  used to set up variables. The destructor is seldom used.
+
