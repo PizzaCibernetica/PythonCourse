@@ -401,38 +401,38 @@ while True:
 
 # this is the out put
 
-Enter Twitter Account:drchuck
-Retrieving https://api.twitter.com/1.1/friends ...
-Remaining 14
-{
-    "users": [
-        {
-            "status": {
-                "text": "@jazzychad I just bought one .__.",
-                 "created_at": "Fri Sep 20 08:36:34 +0000 2013",
-             },
-             "location": "San Francisco, California",
-             "screen_name": "leahculver",
-             "name": "Leah Culver",
-         },
-         {
-            "status": {
-                "text": "RT @WSJ: Big employers like Google ...",
-                 "created_at": "Sat Sep 28 19:36:37 +0000 2013",
-             },
-             "location": "Victoria Canada",
-             "screen_name": "_valeriei",
-             "name": "Valerie Irvine",
-     ],
-}
-Leahculver
-   @jazzychad I just bought one .__._
-Valeriei
-   RT @WSJ: Big employers like Google, AT&amp;T are h
-Ericbollens
-   RT @lukew: sneak peek: my LONG take on the good &a
-halherzog 
-  Learning Objects is 10. We had a cake with the LO,
+# Enter Twitter Account:drchuck
+# Retrieving https://api.twitter.com/1.1/friends ...
+# Remaining 14
+# {
+    # "users": [
+    #     {
+    #         "status": {
+    #             "text": "@jazzychad I just bought one .__.",
+    #              "created_at": "Fri Sep 20 08:36:34 +0000 2013",
+    #          },
+    #          "location": "San Francisco, California",
+    #          "screen_name": "leahculver",
+    #          "name": "Leah Culver",
+    #      },
+    #      {
+    #         "status": {
+    #             "text": "RT @WSJ: Big employers like Google ...",
+    #              "created_at": "Sat Sep 28 19:36:37 +0000 2013",
+    #          },
+#              "location": "Victoria Canada",
+#              "screen_name": "_valeriei",
+#              "name": "Valerie Irvine",
+#      ],
+# }
+# Leahculver
+#    @jazzychad I just bought one .__._
+# Valeriei
+#    RT @WSJ: Big employers like Google, AT&amp;T are h
+# Ericbollens
+#    RT @lukew: sneak peek: my LONG take on the good &a
+# halherzog 
+#   Learning Objects is 10. We had a cake with the LO,
 
 # oAuth code
 
@@ -440,7 +440,7 @@ import urllib
 import oauth
 import hidden
 
-def augment(url, parameters) :
+def augment(url, parameters) :                  # called augment because it augment the url
     secrets = hidden.oauth()
     consumer = oauth.OAuthConsumer(secrets['consumer_key'], secrets['consumer_secret'])
     token = oauth.OAuthToken(secrets['token_key'],secrets['token_secret'])
@@ -450,50 +450,57 @@ def augment(url, parameters) :
     return oauth_request.to_url()
 
 
+# Summary
+# Service Oriented Architecture - allows an application to be broken into parts and distributed across a network 
+# An Application Program Interface (API) is a contract for interaction
+# Web Services provide infrastructure for applications cooperating (an API) over a network - SOAP and REST are two styles of web services
+# XML and JSON are serialization formats
+
+
 # Exercize 1 - Extracting data from XML
-# print('--- Ex 1 - Extracting data from XML ---')
+print('--- Ex 1 - Extracting data from XML ---')
 
-# import xml.etree.ElementTree as ET  
-# import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET  
+import urllib.request, urllib.parse, urllib.error
 
-# url = input('Enter location:')                             # prompt to enter the URL
+url = input('Enter location:')                             # prompt to enter the URL
 
-# print('Retrieving ', url)
-# xmldata = urllib.request.urlopen(url).read()  
+print('Retrieving ', url)
+xmldata = urllib.request.urlopen(url).read()  
 
-# tree = ET.fromstring(xmldata)
-# counts = tree.findall('.//count')
-# print('Count:', len(counts))            # get the numbers of elements
-# sum = 0
+tree = ET.fromstring(xmldata)
+counts = tree.findall('.//count')
+print('Count:', len(counts))            # get the numbers of elements
+sum = 0
 
-# for count in counts:
-#     sum = sum + int(count.text)
+for count in counts:
+    sum = sum + int(count.text)
 
-# print('Sum:',sum)
+print('Sum:',sum)
     
 
 # Exercize 2 - Extracting Data from JSON
-# print('--- Extracting Data from JSON ---')
+print('--- Extracting Data from JSON ---')
 
-# import json 
-# import urllib.request, urllib.parse, urllib.error
+import json 
+import urllib.request, urllib.parse, urllib.error
 
-# url = input('Enter location:')                             # prompt to enter the URL
+url = input('Enter location:')                             # prompt to enter the URL
 
-# print('Retrieving ', url)
-# jsondata = urllib.request.urlopen(url).read()  
+print('Retrieving ', url)
+jsondata = urllib.request.urlopen(url).read()  
 
-# infoJson = json.loads(jsondata)
+infoJson = json.loads(jsondata)
 
-# sum = 0
-# count = 0
+sum = 0
+count = 0
 
-# for whatever in infoJson['comments']:
-#     sum = sum + int(whatever['count'])
-#     count = count + 1
+for whatever in infoJson['comments']:
+    sum = sum + int(whatever['count'])
+    count = count + 1
     
-# print('Count:',count)
-# print('Sum:',sum)
+print('Count:',count)
+print('Sum:',sum)
 
 
 
