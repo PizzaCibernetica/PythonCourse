@@ -141,3 +141,69 @@ print('an contains',an)
 # The constructor and destructor are optional. The constructor is typically
 #  used to set up variables. The destructor is seldom used.
 
+# In object oriented programming, a constructor in a class is a
+#  special block of statements called when an object is created
+
+
+
+# Many Instances
+
+# We can create lots of objects - the class is the template for the object
+# We can store each distinct object in its own variable
+# We call this having multiple instances of the same class
+# Each instance has its own copy of the instance variables
+
+
+class PartyAnimal:
+   x = 0
+   name = ""
+   def __init__(self, z):
+     self.name = z
+     print(self.name,"constructed")
+
+   def party(self) :
+     self.x = self.x + 1
+     print(self.name,"party count",self.x)
+
+s = PartyAnimal("Sally")
+j = PartyAnimal("Jim")
+
+s.party()
+j.party()
+s.party()
+
+
+# Inheritance
+
+# When we make a new class - we can reuse an existing class and inherit all the capabilities
+#   of an existing class and then add our own little bit to make our new class
+# Another form of store and reuse
+# Write once - reuse many times
+# The new class (child) has all the capabilities of the old class (parent) - and then some more
+
+
+# Terminology: Inheritance
+# ‘Subclasses’ are more specialized versions of a class,
+#  which inherit attributes and behaviors from their parent classes,
+#  and can introduce their own.  
+
+
+class PartyAnimal:                          # parent class
+   x = 0
+   name = ""
+   def __init__(self, nam):
+     self.name = nam
+     print(self.name,"constructed")
+
+   def party(self) :
+     self.x = self.x + 1
+     print(self.name,"party count",self.x)
+
+class FootballFan(PartyAnimal):             # child class - footballFan inherits everything that is PartyAnimal
+   points = 0
+   def touchdown(self):
+      self.points = self.points + 7
+      self.party()
+      print(self.name,"points",self.points)
+# FootballFan is a class which extends PartyAnimal. It has all the capabilities of PartyAnimal and more.
+ 
