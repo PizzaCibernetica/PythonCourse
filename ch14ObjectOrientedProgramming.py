@@ -207,3 +207,10 @@ class FootballFan(PartyAnimal):             # child class - footballFan inherits
       print(self.name,"points",self.points)
 # FootballFan is a class which extends PartyAnimal. It has all the capabilities of PartyAnimal and more.
  
+# --- Definitions ---
+# Class - a template
+# Attribute – A variable within a class
+# Method - A function within a class
+# Object - A particular instance of a class
+# Constructor – Code that runs when an object is created
+# Inheritance - The ability to extend a class to make a new class.
