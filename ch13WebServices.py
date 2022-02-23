@@ -266,6 +266,34 @@ for item in info:
 
 
 
+# Web Services - SOA 
+print('\n--- Service Oriented Approach ---\n')
+
+
+# Service Oriented Approach
+# Most non-trivial web applications use services
+# They use services from other applications
+#       -  Credit Card Charge
+#       -  Hotel Reservation systems
+# Services publish the “rules” applications must follow to make use of the service (API)
+
+
+# Multiple Systems
+
+# Initially - two systems cooperate and split the problem
+# As the data/service becomes useful -
+#   multiple applications want to use the information / application
+
+# Application Program Interface
+print('\n--- Application Program Interface ---\n')
+
+# The API itself is largely abstract in that it specifies an interface and
+#   controls the behavior of the objects specified in that interface.
+#   The software that provides the functionality described by an API is said to be
+#   an “implementation” of the API.  An API is typically defined in terms of the
+#   programming language used to build an application. 
+
+
 
 # Exercize 1 - Extracting data from XML
 # print('--- Ex 1 - Extracting data from XML ---')
