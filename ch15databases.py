@@ -117,3 +117,15 @@ print('- - -  Databases - - -')
 # SELECT * FROM Users ORDER BY email
 
 
+# --- Example 3 ----
+print('--- Example 3 ---')
+
+import sqlite3              # import the library
+
+conn = sqlite3.connect('emaildb.sqlite')        # connection with database which check access to the file
+cur = conn.cursor()                             # cursor is like a handle (not quite as simple as a handle)
+
+
+
+
+# ___ Complex Data Models and  Relationships ___
